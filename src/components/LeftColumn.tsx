@@ -95,7 +95,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
         </div>
 
         {/* Desktop nav */}
-        <nav className="hidden flex-col gap-1 lg:flex" aria-label="Sections">
+        <nav className="hidden flex-col gap-2 lg:flex" aria-label="Sections">
           {NAV_ITEMS.map((item, i) => {
             const isActive = activeSection === item.id;
             return (
@@ -105,13 +105,30 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 + i * 0.07 }}
                 onClick={() => scrollTo(item.id)}
-                className="group flex cursor-pointer items-center gap-3 py-2 text-left"
+                aria-current={isActive ? "page" : undefined}
+                className="group flex items-baseline gap-4 py-1.5 text-left transition-colors duration-200"
+                style={{
+                  color: isActive ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                  fontWeight: isActive ? 700 : 400,
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) (e.currentTarget as HTMLElement).style.color = "var(--color-text-body)";
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) (e.currentTarget as HTMLElement).style.color = "var(--color-text-muted)";
+                }}
               >
-                <span className="nav-bar" data-active={isActive ? "true" : "false"} />
-                <span className="text-xs uppercase tracking-widest transition-colors duration-200"
-                  style={{ color: isActive ? "var(--color-text-primary)" : "var(--color-text-body)", fontWeight: isActive ? 700 : 400 }}>
-                  {item.label}
+                <span
+                  className="font-mono text-xs tabular-nums"
+                  style={{
+                    minWidth: "1.5ch",
+                    color: isActive ? "var(--color-accent)" : "var(--color-border-dark)",
+                    transition: "color 0.2s ease",
+                  }}
+                >
+                  {String(i + 1).padStart(2, "0")}
                 </span>
+                <span className="text-sm">{item.label}</span>
               </motion.button>
             );
           })}
@@ -123,23 +140,24 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
           className="flex gap-4 overflow-x-auto pb-1 lg:hidden"
           aria-label="Sections"
         >
-          {NAV_ITEMS.map((item) => {
+          {NAV_ITEMS.map((item, i) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className="flex-shrink-0 border-b-2 pb-1 text-xs font-semibold uppercase tracking-widest transition-all duration-200"
-                style={{
-                  borderBottomColor: isActive
-                    ? "var(--color-accent)"
-                    : "transparent",
-                  color: isActive
-                    ? "var(--color-accent)"
-                    : "var(--color-text-body)",
-                }}
+                className="flex-shrink-0 inline-flex items-baseline gap-2 pb-1 transition-colors duration-200"
+                style={{ color: isActive ? "var(--color-text-primary)" : "var(--color-text-muted)" }}
               >
-                {item.label}
+                <span
+                  className="font-mono text-[10px]"
+                  style={{ color: isActive ? "var(--color-accent)" : "var(--color-border-dark)" }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-widest">
+                  {item.label}
+                </span>
               </button>
             );
           })}
