@@ -2,13 +2,22 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { BarChart2, Code2 } from "lucide-react";
+import { BarChart2, Code2, ShieldAlert, Bot, Cloud, QrCode, UserCheck, Radio, type LucideIcon } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Pill from "@/components/ui/Pill";
 import { featuredProjects, otherProjects } from "@/data/projects";
 
 const VISIBLE_OTHER = 6;
+
+const PROJECT_ICONS: Record<string, LucideIcon> = {
+  "Fraud Detection System":                    ShieldAlert,
+  "AI Workflow Automation":                    Bot,
+  "Corppass AWS Cloud Migration":              Cloud,
+  "Singpass QR Login":                         QrCode,
+  "Customer Onboarding & Identity Assurance":  UserCheck,
+  "NEC MS5000 Radio Telecom Software":         Radio,
+};
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
@@ -194,7 +203,8 @@ export default function Projects() {
 
               {/* Title + description */}
               <div className="flex flex-col gap-2">
-                <h4 className="font-semibold" style={{ color: "var(--color-text-primary)" }}>
+                <h4 className="flex items-center gap-2 font-semibold" style={{ color: "var(--color-text-primary)" }}>
+                  {(() => { const Icon = PROJECT_ICONS[project.name]; return Icon ? <Icon size={14} style={{ color: "var(--icon-projects)", flexShrink: 0 }} /> : null; })()}
                   {project.name}
                 </h4>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-body)" }}>
