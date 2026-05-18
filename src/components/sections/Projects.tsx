@@ -39,45 +39,31 @@ export default function Projects() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: false, amount: 0.15 }}
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
-              className="group relative flex flex-col overflow-hidden rounded-lg transition-all duration-300 lg:flex-row cursor-pointer"
-              style={{
-                backgroundColor: "transparent",
-                border: "1px solid transparent",
-                boxShadow: "none",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = "var(--color-bg-card)";
-                el.style.border = "1px solid var(--color-hover-border)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = "transparent";
-                el.style.border = "1px solid transparent";
-              }}
+              className="group relative flex flex-col overflow-hidden rounded-lg lg:grid lg:grid-cols-[45%_1fr]"
+              style={{ backgroundColor: "var(--color-bg-card)", border: "1px solid var(--color-border)" }}
             >
-              {/* Image */}
-              <div
-                className="relative flex-shrink-0 self-start overflow-hidden lg:order-first"
-                style={{ width: "140px", minWidth: "140px", height: "80px", marginTop: "1.75rem", marginLeft: "1.75rem", backgroundColor: "var(--color-border)" }}
-              >
+              {/* Left: image hero */}
+              <div className="relative overflow-hidden" style={{ minHeight: "180px" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={project.image}
                   alt={project.name}
                   className="h-full w-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = "none";
+                    (target.parentElement as HTMLElement).classList.add("img-placeholder");
                   }}
                 />
-                <span
-                  className="absolute left-2 top-2 font-mono text-xl font-bold leading-none select-none"
-                  style={{ color: "var(--color-accent)", opacity: 0.3 }}
-                >
+                {/* gradient overlay */}
+                <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(30,35,54,0.1), rgba(30,35,54,0.55))" }} />
+                {/* number top-left */}
+                <span className="absolute left-3 top-3 font-mono text-2xl font-bold select-none" style={{ color: "white", opacity: 0.5 }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
+                {/* logo bottom-right */}
                 {project.logo && (
-                  <div className="absolute bottom-2 right-2 left-2 flex justify-end">
+                  <div className="absolute bottom-3 right-3">
                     <div className="rounded px-2 py-1" style={{ backgroundColor: "rgba(255,255,255,0.93)" }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={project.logo} alt={`${project.name} logo`} className="w-auto max-w-[80px] object-contain" style={{ height: "16px", ...project.logoStyle }} />
@@ -86,63 +72,31 @@ export default function Projects() {
                 )}
               </div>
 
-              {/* Content */}
-              <div className="flex flex-1 flex-col justify-start gap-4 p-4 lg:order-last">
+              {/* Right: content */}
+              <div className="flex flex-col justify-start gap-4 p-5">
                 <h3 className="flex items-center gap-2 text-xl font-bold" style={{ color: "var(--color-text-primary)" }}>
                   {project.live ? (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <a href={project.live} target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-2 transition-colors duration-150"
                       style={{ color: "var(--color-text-primary)" }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
-                        const icon = e.currentTarget.querySelector(".ext-icon") as HTMLElement;
-                        if (icon) icon.style.transform = "translateY(-3px)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.color = "var(--color-text-primary)";
-                        const icon = e.currentTarget.querySelector(".ext-icon") as HTMLElement;
-                        if (icon) icon.style.transform = "translateY(0)";
-                      }}
-                    >
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-accent)"; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text-primary)"; }}>
                       {project.name}
-                      <span className="ext-icon inline-flex flex-shrink-0 transition-transform duration-150">
-                        <ExternalLink size={16} />
-                      </span>
+                      <ExternalLink size={16} className="flex-shrink-0" />
                     </a>
-                  ) : (
-                    project.name
-                  )}
+                  ) : project.name}
                 </h3>
-
-                <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-body)" }}>
-                  {project.description}
-                </p>
-
-                {/* Outcome pills */}
+                <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-body)" }}>{project.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {project.outcomes.map((o) => (
-                    <Pill key={o} variant="outcome" icon={BarChart2}>{o}</Pill>
-                  ))}
+                  {project.outcomes.map(o => <Pill key={o} variant="outcome" icon={BarChart2}>{o}</Pill>)}
                 </div>
-
                 {project.github && (
-                  <div className="flex items-center gap-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub"
-                      className="transition-colors duration-150"
-                      style={{ color: "var(--color-text-muted)" }}
-                      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-accent)")}
-                      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-text-muted)")}
-                    >
-                      <GitHubIcon size={18} />
-                    </a>
-                  </div>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                    className="transition-colors duration-150" style={{ color: "var(--color-text-muted)" }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-accent)")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-text-muted)")}>
+                    <GitHubIcon size={18} />
+                  </a>
                 )}
               </div>
             </motion.div>
