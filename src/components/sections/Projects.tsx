@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, BarChart2, Code2 } from "lucide-react";
+import { BarChart2, Code2 } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Pill from "@/components/ui/Pill";
@@ -79,10 +79,18 @@ export default function Projects() {
                     <a href={project.live} target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-2 transition-colors duration-150"
                       style={{ color: "var(--color-text-primary)" }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-accent)"; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text-primary)"; }}>
-                      {project.name}
-                      <ExternalLink size={16} className="flex-shrink-0" />
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
+                        const arrow = e.currentTarget.querySelector(".proj-arrow") as HTMLElement;
+                        if (arrow) arrow.style.transform = "translateX(4px)";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.color = "var(--color-text-primary)";
+                        const arrow = e.currentTarget.querySelector(".proj-arrow") as HTMLElement;
+                        if (arrow) arrow.style.transform = "translateX(0)";
+                      }}>
+                      <span>{project.name}</span>
+                      <span className="proj-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "16px", lineHeight: 1 }}>→</span>
                     </a>
                   ) : project.name}
                 </h3>
@@ -168,10 +176,18 @@ export default function Projects() {
                     aria-label="Live site"
                     className="transition-colors duration-150"
                     style={{ color: "var(--color-text-muted)" }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-accent)")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-text-muted)")}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
+                      const arrow = e.currentTarget.querySelector(".proj-arrow") as HTMLElement;
+                      if (arrow) arrow.style.transform = "translateX(4px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "var(--color-text-muted)";
+                      const arrow = e.currentTarget.querySelector(".proj-arrow") as HTMLElement;
+                      if (arrow) arrow.style.transform = "translateX(0)";
+                    }}
                   >
-                    <ExternalLink size={16} />
+                    <span className="proj-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "16px", lineHeight: 1 }}>→</span>
                   </a>
                 )}
               </div>
