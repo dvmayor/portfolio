@@ -69,16 +69,27 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
           >
             Engineering teams that ship to millions.
           </motion.p>
-          <motion.p
+          <motion.div
             initial={{ y: 16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.35 }}
-            className="mt-1 flex items-center gap-1.5 text-xs"
-            style={{ color: "var(--color-text-body)" }}
+            className="mt-3 flex flex-col gap-1.5 text-xs"
           >
-            <span>📍</span>
-            Sydney, AU · Open to EM &amp; Senior Eng roles
-          </motion.p>
+            <div
+              className="flex items-center gap-2.5 font-medium"
+              style={{ color: "var(--color-text-primary)" }}
+            >
+              <span className="status-dot" aria-hidden="true" />
+              Open to EM &amp; Senior Eng roles
+            </div>
+            <div
+              className="flex items-center gap-1.5"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              <span aria-hidden="true">📍</span>
+              Sydney, AU
+            </div>
+          </motion.div>
         </div>
 
         {/* Desktop nav */}
@@ -104,17 +115,6 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
           })}
         </nav>
 
-        {/* Now block — desktop only */}
-        <div className="hidden lg:block mt-8 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-          <div className="flex items-center gap-2" style={{ fontFamily: "monospace", fontSize: "9px", textTransform: "uppercase", letterSpacing: "0.22em", color: "var(--color-text-muted)" }}>
-            <span className="now-dot" />
-            Currently
-          </div>
-          <div className="mt-3 flex flex-col gap-1.5 text-xs leading-relaxed" style={{ color: "var(--color-text-body)" }}>
-            <div><b style={{ color: "var(--color-text-primary)" }}>Learning</b> · Agentic Frameworks</div>
-            <div><b style={{ color: "var(--color-text-primary)" }}>Reading</b> · <a href="https://www.latent.space" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-accent)" }}>Latent Space</a></div>
-          </div>
-        </div>
 
         {/* Mobile nav — horizontal scroll row */}
         <nav
