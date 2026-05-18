@@ -67,7 +67,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
             className="mt-1 text-sm"
             style={{ color: "var(--color-text-body)" }}
           >
-            I run engineering teams. I&rsquo;ve done it at scale.
+            I build teams that deliver. Now I&rsquo;m going deep on AI.
           </motion.p>
           <motion.p
             initial={{ y: 16, opacity: 0 }}

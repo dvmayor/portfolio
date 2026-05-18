@@ -65,13 +65,13 @@ export default function About() {
               >
                 Corppass
               </a>
-              , the apps most Singapore resident use to log into government services.
+              , the apps most Singapore residents use to log into government services.
             </p>
             <p>
               I like sitting between the tech and the product side, figuring out what
-              to build, not just how. I still get into the code when it helps. Lately
-              I&rsquo;ve been experimenting a lot with AI tooling and actually shipped
-              some of it into production.
+              to build, not just how. I still get into the code when it helps. Right now
+              I&rsquo;m deliberately going deeper on agentic AI. I piloted
+              an LLM-based document verification workflow in banking and want to keep building in that space.
             </p>
             <p>
               I&rsquo;m on Australian PR, looking for an EM or senior engineering role in Sydney where I can own delivery and grow a team.
@@ -91,20 +91,39 @@ export default function About() {
         </div>
 
         {/* Skills bar */}
-        <div className="flex flex-wrap gap-2 lg:max-w-3xl">
-          {["AWS", "GenAI / LLMs", "React", "TypeScript", "Java", "Digital Banking", "Identity & Access", "Agile / SAFe"].map((skill) => (
-            <span
-              key={skill}
-              className="rounded-full px-3 py-1 text-xs font-semibold"
-              style={{
-                backgroundColor: "var(--color-tag-bg)",
-                border: "1px solid var(--color-tag-border)",
-                color: "var(--color-accent)",
-              }}
-            >
-              {skill}
-            </span>
-          ))}
+        <div className="flex flex-col gap-3 lg:max-w-3xl">
+          <div className="flex flex-wrap gap-2">
+            <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Stack</span>
+            {["AWS", "Agentic AI", "Python", "React", "TypeScript", "Java"].map((skill) => (
+              <span
+                key={skill}
+                className="rounded-full px-3 py-1 text-xs font-semibold"
+                style={{
+                  backgroundColor: "var(--color-tag-bg)",
+                  border: "1px solid var(--color-tag-border)",
+                  color: "var(--color-accent)",
+                }}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Domain</span>
+            {["Digital Banking", "Identity & Access", "Agile / SAFe"].map((skill) => (
+              <span
+                key={skill}
+                className="rounded-full px-3 py-1 text-xs font-semibold"
+                style={{
+                  backgroundColor: "var(--color-tag-bg)",
+                  border: "1px solid var(--color-tag-border)",
+                  color: "var(--color-accent)",
+                }}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
       </motion.div>
     </section>

@@ -24,7 +24,7 @@ export const featuredProjects: FeaturedProject[] = [
   {
     name: "UOB Digital Banking Platform",
     description:
-      "End-to-end engineering leadership of a Tier-1 ASEAN bank's mobile, web, and branch-counter channels across Singapore, Thailand, Malaysia, Indonesia, and Vietnam — serving 8 million customers.",
+      "End-to-end engineering leadership of a Tier-1 ASEAN bank's mobile, web, and branch-counter channels across Singapore, Thailand, Malaysia, Indonesia, and Vietnam, serving 8 million customers.",
     outcomes: ["25+ engineers", "8M customers", "5 countries", "Certificate of Excellence"],
     tech: ["Java", "Spring", "Microservices", "RESTful APIs", "Apache Camel", "Jenkins", "SQL"],
     github: "",
@@ -89,7 +89,7 @@ export const otherProjects: OtherProject[] = [
   {
     name: "Corppass AWS Cloud Migration",
     description:
-      "Led full migration of Corppass — Singapore's corporate digital identity platform — to AWS Cloud, improving scalability and authentication processing times for 200k+ businesses.",
+      "Led full migration of Corppass, Singapore's corporate digital identity platform, to AWS Cloud, improving scalability and authentication processing times for 200k+ businesses.",
     tech: ["AWS", "Kubernetes", "Java", "Weblogic"],
     github: "",
     live: "",
