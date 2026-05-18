@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { PenLine } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { writing } from "@/data/writing";
 
@@ -9,7 +10,7 @@ export default function Writing() {
 
   return (
     <section id="writing" className="px-8 py-16 lg:px-16 lg:py-24">
-      <SectionLabel>Writing</SectionLabel>
+      <SectionLabel icon={PenLine} glowColor="var(--icon-about)">Writing</SectionLabel>
 
       <motion.ul
         initial={{ y: 20, opacity: 0 }}

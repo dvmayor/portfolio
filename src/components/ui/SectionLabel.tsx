@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { type LucideIcon } from "lucide-react";
 
 interface SectionLabelProps {
@@ -9,19 +9,19 @@ interface SectionLabelProps {
   glowColor: string;
 }
 
-const lineAccent = {
-  hidden: { scaleX: 0, originX: "0%" },
-  visible: { scaleX: 1, transition: { duration: 0.3, ease: "easeOut" } },
+const lineAccent: Variants = {
+  hidden: { scaleX: 0 },
+  visible: { scaleX: 1, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } },
 };
 
-const lineMuted = {
-  hidden: { scaleX: 0, originX: "0%" },
-  visible: { scaleX: 1, transition: { duration: 0.5, ease: "easeOut", delay: 0.1 } },
+const lineMuted: Variants = {
+  hidden: { scaleX: 0 },
+  visible: { scaleX: 1, transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1], delay: 0.1 } },
 };
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut", delay: 0.2 } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.2 } },
 };
 
 export default function SectionLabel({ children, icon: Icon, glowColor }: SectionLabelProps) {
