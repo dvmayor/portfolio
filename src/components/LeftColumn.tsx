@@ -76,17 +76,19 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
             className="mt-3 flex flex-col gap-1.5 text-xs"
           >
             <div
-              className="flex items-center gap-2.5 font-medium"
+              className="flex items-center gap-2 font-medium"
               style={{ color: "var(--color-text-primary)" }}
             >
-              <span className="status-dot" aria-hidden="true" />
+              <span style={{ width: "14px", display: "inline-flex", justifyContent: "center", flexShrink: 0 }}>
+                <span className="status-dot" aria-hidden="true" />
+              </span>
               Open to EM &amp; Senior Eng roles
             </div>
             <div
-              className="flex items-center gap-1.5"
+              className="flex items-center gap-2"
               style={{ color: "var(--color-text-muted)" }}
             >
-              <span aria-hidden="true">📍</span>
+              <span aria-hidden="true" style={{ width: "14px", display: "inline-flex", justifyContent: "center", flexShrink: 0 }}>📍</span>
               Sydney, AU
             </div>
           </motion.div>
