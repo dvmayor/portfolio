@@ -123,18 +123,16 @@ export default function Experience() {
         transition={{ duration: 0.45, ease: "easeOut" }}
         className="mt-12"
       >
-        <div className="mb-4 flex items-center gap-3">
-          <span
-            className="font-mono text-[10px] uppercase"
-            style={{ color: "var(--color-text-muted)", letterSpacing: "0.22em" }}
-          >
-            Credentials
-          </span>
-          <span
-            className="h-px flex-1"
-            style={{ backgroundColor: "var(--color-border-dark)" }}
-          />
-        </div>
+        <motion.h3
+          initial={{ x: -24, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="mb-4 text-center text-sm font-semibold uppercase tracking-widest"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          Credentials
+        </motion.h3>
 
         <ul className="flex flex-col">
           {certifications.map((c, i) => (
