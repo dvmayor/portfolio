@@ -12,14 +12,6 @@ export interface FeaturedProject {
   logoStyle?: CSSProperties;
 }
 
-export interface OtherProject {
-  name: string;
-  description: string;
-  tech: string[];
-  github: string;
-  live: string;
-}
-
 export const featuredProjects: FeaturedProject[] = [
   {
     name: "UOB Digital Banking Platform",
@@ -69,53 +61,3 @@ export const featuredProjects: FeaturedProject[] = [
   },
 ];
 
-export const otherProjects: OtherProject[] = [
-  {
-    name: "Fraud Detection System",
-    description:
-      "Led development of a fraud detection initiative for UOB's digital banking operations. Awarded Certificate of Recognition for Performance Excellence (Mar 2024) for outstanding delivery.",
-    tech: ["Java", "Spring Boot", "Microservices", "SQL"],
-    github: "",
-    live: "",
-  },
-  {
-    name: "AI Workflow Automation",
-    description:
-      "Integrated LLM-backed workflows using Amazon Bedrock, LangChain, and RAG pipelines into regulated environments, cutting manual processing effort by 25%.",
-    tech: ["Amazon Bedrock", "LangChain", "RAG", "Python"],
-    github: "",
-    live: "",
-  },
-  {
-    name: "Corppass AWS Cloud Migration",
-    description:
-      "Led full migration of Corppass, Singapore's corporate digital identity platform, to AWS Cloud, improving scalability and authentication processing times for 200k+ businesses.",
-    tech: ["AWS", "Kubernetes", "Java", "Weblogic"],
-    github: "",
-    live: "",
-  },
-  {
-    name: "Singpass QR Login",
-    description:
-      "Designed and delivered QR-based login for Singpass, enhancing security and user experience for over 5 million users with support for millions of daily authentication requests.",
-    tech: ["Java", "Spring", "RESTful APIs", "Agile"],
-    github: "",
-    live: "",
-  },
-  {
-    name: "Customer Onboarding & Identity Assurance",
-    description:
-      "Built customer onboarding and identity assurance level systems integrating front-end digital banking apps with back-end systems across multiple ASEAN countries.",
-    tech: ["Java", "Spring", "Apache Camel", "RESTful APIs"],
-    github: "",
-    live: "",
-  },
-  {
-    name: "NEC MS5000 Radio Telecom Software",
-    description:
-      "Designed, developed, and maintained mission-critical Java applications for NEC's MS5000 R10.0 Radio platform. Awarded Presidential Award for outstanding delivery under a short development period.",
-    tech: ["Java", "Computer Science", "Software Design"],
-    github: "",
-    live: "",
-  },
-];

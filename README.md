@@ -39,7 +39,6 @@ Then edit the structured data files directly:
 
 - `src/data/experience.ts` — work history
 - `src/data/projects.ts` — featured + other projects
-- `src/data/writing.ts` — blog posts / articles (set to `[]` to hide the section)
 
 Drop project screenshots into `public/images/projects/` and update the `image` paths in `projects.ts`.
 

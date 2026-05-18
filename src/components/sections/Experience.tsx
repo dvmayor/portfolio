@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, ChevronRight, ExternalLink } from "lucide-react";
+import { BarChart2, Briefcase, ChevronRight } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
-import { experience } from "@/data/experience";
+import Pill from "@/components/ui/Pill";
+import { experience, type Initiative } from "@/data/experience";
 import { certifications } from "@/data/certifications";
 
 export default function Experience() {
@@ -75,12 +76,13 @@ export default function Experience() {
                       flexShrink: 0,
                     }}
                   />
-                  <span className={`${older ? "text-sm" : "text-base"} font-bold leading-snug`} style={{ color: older ? "var(--color-text-muted)" : "var(--color-accent)" }}>
-                    <a href={exp.url} target="_blank" rel="noopener noreferrer" className="hover:underline" onClick={e => e.stopPropagation()}>
-                      {exp.company}
-                    </a>
-                    {" • "}
-                    {exp.title}.
+                  <span
+                    className={`${older ? "text-sm" : "text-base"} font-bold leading-snug`}
+                    style={{ color: older ? "var(--color-text-muted)" : "var(--color-text-primary)" }}
+                  >
+                    {exp.company}
+                    <span style={{ fontWeight: 500 }}>{" · "}</span>
+                    {exp.title}
                   </span>
                 </button>
 
@@ -98,6 +100,9 @@ export default function Experience() {
                       ))}
                     </ul>
 
+                    {exp.initiatives && exp.initiatives.length > 0 && (
+                      <InitiativesToggle initiatives={exp.initiatives} />
+                    )}
                   </>
                 )}
               </div>
@@ -134,60 +139,77 @@ export default function Experience() {
           Credentials
         </motion.h3>
 
-        <ul className="flex flex-col">
-          {certifications.map((c, i) => (
-            <li
+        <motion.div
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12 } },
+          }}
+        >
+          {certifications.map((c) => (
+            <motion.div
               key={c.name}
-              className="flex items-baseline justify-between gap-4 py-3"
+              variants={{
+                hidden: { y: 16, opacity: 0 },
+                visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
+              }}
+              className="relative flex flex-col gap-2 rounded-lg px-5 py-4"
               style={{
-                borderTop: i === 0 ? "1px solid var(--color-border-dark)" : "none",
-                borderBottom: "1px solid var(--color-border-dark)",
+                backgroundColor: "var(--color-bg-card)",
+                border: "1px solid var(--color-border)",
+                borderTop: "2px solid var(--color-tag-domain-border)",
               }}
             >
-              <div className="flex items-baseline gap-2 min-w-0 flex-1">
-                <span
-                  className="text-sm font-semibold truncate"
+
+              <div className="flex items-baseline justify-between gap-3">
+                <h4
+                  className="text-base font-bold leading-snug"
                   style={{ color: "var(--color-text-primary)" }}
                 >
                   {c.name}
-                </span>
+                </h4>
                 <span
-                  className="text-xs whitespace-nowrap"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
-                  · {c.issuer}
-                </span>
-              </div>
-              <div className="flex items-baseline gap-4 flex-shrink-0">
-                <span
-                  className="font-mono text-[10px]"
-                  style={{ color: "var(--color-text-muted)" }}
+                  className="font-mono text-xs flex-shrink-0"
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   {c.year}
                 </span>
+              </div>
+
+              <div className="flex items-baseline justify-between gap-3">
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {c.issuer}
+                </p>
                 <a
                   href={c.verifyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs transition-colors duration-150"
+                  className="inline-flex items-center gap-1 text-sm font-medium transition-colors duration-150 flex-shrink-0"
                   style={{ color: "var(--color-accent)" }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
+                    const arrow = e.currentTarget.querySelector(".proj-arrow") as HTMLElement;
+                    if (arrow) arrow.style.transform = "translate(3px, -3px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
+                    const arrow = e.currentTarget.querySelector(".proj-arrow") as HTMLElement;
+                    if (arrow) arrow.style.transform = "translateX(0)";
+                  }}
                 >
-                  Verify
-                  <ExternalLink size={11} />
+                  <span>Verify</span>
+                  <span className="proj-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "14px", lineHeight: 1 }}>↗</span>
                 </a>
               </div>
-            </li>
+            </motion.div>
           ))}
-        </ul>
-
-        <p
-          className="mt-3 font-mono text-[9px] uppercase"
-          style={{ color: "var(--color-text-muted)", letterSpacing: "0.08em" }}
-        >
-          Verified via Credly
-        </p>
+        </motion.div>
       </motion.div>
 
       {/* Resume link */}
@@ -212,5 +234,80 @@ export default function Experience() {
         </a>
       </motion.div>
     </section>
+  );
+}
+
+function InitiativesToggle({ initiatives }: { initiatives: Initiative[] }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="mt-4 ml-[22px]">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-150"
+        style={{ color: "var(--color-text-primary)", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+      >
+        <ChevronRight
+          size={12}
+          style={{
+            color: "var(--color-accent)",
+            transform: open ? "rotate(90deg)" : "rotate(0)",
+            transition: "transform 0.15s ease",
+          }}
+        />
+        {`${open ? "Hide" : "Show"} Key Initiatives (${initiatives.length})`}
+      </button>
+
+      {open && (
+        <div className="mt-1">
+          {initiatives.map((init) => (
+            <InitiativeRow key={init.name} init={init} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function InitiativeRow({ init }: { init: Initiative }) {
+  return (
+    <div className="py-2.5 pl-[22px]">
+      <div className="mb-1.5 flex items-baseline gap-2">
+        <span
+          aria-hidden="true"
+          className="inline-block flex-shrink-0 rounded-full"
+          style={{
+            width: 4,
+            height: 4,
+            background: "var(--color-text-body)",
+            transform: "translateY(-2px)",
+          }}
+        />
+        <span
+          className="text-sm font-bold"
+          style={{ color: "var(--icon-experience)" }}
+        >
+          {init.name}
+        </span>
+      </div>
+      <div
+        className="ml-3 text-sm leading-relaxed"
+        style={{ color: "var(--color-text-body)" }}
+      >
+        {init.description}
+      </div>
+      <div className="ml-3 mt-1.5 flex flex-wrap gap-1.5">
+        {init.outcomes?.map((o) => (
+          <Pill key={o} variant="outcome" icon={BarChart2}>
+            {o}
+          </Pill>
+        ))}
+        {init.tech.map((t) => (
+          <Pill key={t} variant="tech">
+            {t}
+          </Pill>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -20,7 +20,7 @@ export default function About() {
         {/* Headline — full width */}
         <h2 className="text-3xl font-bold leading-[1.1] tracking-tight lg:text-5xl" style={{ color: "var(--color-text-primary)" }}>
           Building teams that{" "}
-          <span style={{ color: "var(--color-accent)" }}>ship to millions.</span>
+          <span style={{ color: "var(--color-highlight)" }}>ship to millions.</span>
           {" "}Going deep on{" "}
           <span style={{ color: "var(--color-accent)" }}>AI.</span>
         </h2>
@@ -74,7 +74,7 @@ export default function About() {
           </div>
           <div className="flex flex-wrap gap-2">
             <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Domain</span>
-            {["Digital Banking", "Identity & Access", "Agile / SAFe"].map((skill) => (
+            {["Digital Banking", "FinTech", "Identity Systems", "Fraud Prevention"].map((skill) => (
               <Pill key={skill} variant="domain">{skill}</Pill>
             ))}
           </div>
