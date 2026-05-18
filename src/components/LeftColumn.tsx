@@ -27,7 +27,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
   const { theme, toggle } = useTheme();
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
   };
 
   return (
@@ -36,7 +36,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="flex flex-col justify-between px-8 py-12 lg:sticky lg:top-0 lg:h-screen lg:w-[42%] lg:max-w-md lg:py-24 lg:pl-16 lg:pr-10"
-      style={{ backgroundColor: "var(--color-bg)" }}
+      style={{ backgroundColor: "var(--color-bg-nav)" }}
     >
       {/* Top: name + tagline + nav */}
       <div className="flex flex-col gap-10">
@@ -64,20 +64,20 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
             initial={{ y: 16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-            className="mt-1 text-sm"
-            style={{ color: "var(--color-text-body)" }}
+            className="mt-1 text-sm lg:hidden"
+            style={{ color: "var(--color-text-primary)", fontWeight: 500 }}
           >
-            I build teams that deliver. Now I&rsquo;m going deep on AI.
+            Engineering teams that ship to millions.
           </motion.p>
           <motion.p
             initial={{ y: 16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.35 }}
             className="mt-1 flex items-center gap-1.5 text-xs"
-            style={{ color: "var(--color-text-muted)" }}
+            style={{ color: "var(--color-text-body)" }}
           >
             <span>📍</span>
-            Sydney, Australia · PR
+            Sydney · Open to roles
           </motion.p>
         </div>
 
@@ -92,24 +92,30 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 + i * 0.07 }}
                 onClick={() => scrollTo(item.id)}
-                className="group flex cursor-pointer items-center gap-3 border-l-2 py-2 pl-3 text-left transition-all duration-200"
-                style={{
-                  borderLeftColor: isActive
-                    ? "var(--color-accent)"
-                    : "transparent",
-                  color: isActive
-                    ? "var(--color-accent)"
-                    : "var(--color-text-body)",
-                  fontWeight: isActive ? 700 : 400,
-                }}
+                className="group flex cursor-pointer items-center gap-3 py-2 text-left"
               >
-                <span className="text-xs uppercase tracking-widest">
+                <span className="nav-bar" data-active={isActive ? "true" : "false"} />
+                <span className="text-xs uppercase tracking-widest transition-colors duration-200"
+                  style={{ color: isActive ? "var(--color-text-primary)" : "var(--color-text-body)", fontWeight: isActive ? 700 : 400 }}>
                   {item.label}
                 </span>
               </motion.button>
             );
           })}
         </nav>
+
+        {/* Now block — desktop only */}
+        <div className="hidden lg:block mt-8 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+          <div className="flex items-center gap-2" style={{ fontFamily: "monospace", fontSize: "9px", textTransform: "uppercase", letterSpacing: "0.22em", color: "var(--color-text-muted)" }}>
+            <span className="now-dot" />
+            Currently
+          </div>
+          <div className="mt-3 flex flex-col gap-1.5 text-xs leading-relaxed" style={{ color: "var(--color-text-body)" }}>
+            <div><b style={{ color: "var(--color-text-primary)" }}>Learning</b> · Agent Frameworks</div>
+            <div><b style={{ color: "var(--color-text-primary)" }}>Reading</b> · <a href="https://www.latent.space" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-accent)" }}>Latent Space</a></div>
+            <div><b style={{ color: "var(--color-text-primary)" }}>Open to</b> · EM &amp; Senior Eng roles in Sydney</div>
+          </div>
+        </div>
 
         {/* Mobile nav — horizontal scroll row */}
         <nav
@@ -147,7 +153,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
         className="mt-10 flex items-center gap-5 lg:mt-0"
       >
         {[
-          { href: "https://github.com/davidreuelv", label: "GitHub", Icon: GitHubIcon },
+          // { href: "https://github.com/davidreuelv", label: "GitHub", Icon: GitHubIcon },
           { href: "https://www.linkedin.com/in/davidreuelvillamayor/", label: "LinkedIn", Icon: LinkedInIcon },
         ].map(({ href, label, Icon }) => (
           <a
@@ -189,6 +195,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
           aria-label="Toggle theme"
           className="ml-auto transition-colors duration-200"
           style={{ color: "var(--color-text-muted)" }}
+          title="Toggle Display Mode"
           onMouseEnter={(e) =>
             ((e.currentTarget as HTMLElement).style.color = "var(--color-highlight)")
           }
