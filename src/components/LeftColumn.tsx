@@ -77,7 +77,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
             style={{ color: "var(--color-text-body)" }}
           >
             <span>📍</span>
-            Sydney · Open to roles
+            Sydney, AU · Open to EM &amp; Senior Eng roles
           </motion.p>
         </div>
 
@@ -111,9 +111,8 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
             Currently
           </div>
           <div className="mt-3 flex flex-col gap-1.5 text-xs leading-relaxed" style={{ color: "var(--color-text-body)" }}>
-            <div><b style={{ color: "var(--color-text-primary)" }}>Learning</b> · Agent Frameworks</div>
+            <div><b style={{ color: "var(--color-text-primary)" }}>Learning</b> · Agentic Frameworks</div>
             <div><b style={{ color: "var(--color-text-primary)" }}>Reading</b> · <a href="https://www.latent.space" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-accent)" }}>Latent Space</a></div>
-            <div><b style={{ color: "var(--color-text-primary)" }}>Open to</b> · EM &amp; Senior Eng roles in Sydney</div>
           </div>
         </div>
 
