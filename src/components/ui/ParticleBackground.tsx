@@ -21,9 +21,16 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Reduced-motion: skip animation entirely
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const COUNT = typeof window !== "undefined" && window.innerWidth < 768 ? 30 : 100;
+
     let animId: number;
+    let paused = false;
     const particles: Particle[] = [];
-    const COUNT = 100;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -44,6 +51,7 @@ export default function ParticleBackground() {
     for (let i = 0; i < COUNT; i++) particles.push(spawn(i));
 
     const animate = () => {
+      if (paused) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (const p of particles) {
         p.x += p.vx;
@@ -60,19 +68,31 @@ export default function ParticleBackground() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = isLight
-          ? `rgba(22,27,58,${p.opacity * 1.4})`
+          ? `rgba(255, 0, 0, ${p.opacity * 1.4})`
           : `rgba(255,255,255,${p.opacity})`;
         ctx.fill();
       }
       animId = requestAnimationFrame(animate);
     };
 
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        paused = true;
+        cancelAnimationFrame(animId);
+      } else {
+        paused = false;
+        animate();
+      }
+    };
+
     animate();
     window.addEventListener("resize", resize);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 

@@ -7,7 +7,6 @@ import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import ParticleBackground from "@/components/ui/ParticleBackground";
-import CursorGlow from "@/components/ui/CursorGlow";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
       style={{ backgroundColor: "var(--color-bg)" }}
     >
       <ParticleBackground />
-      <CursorGlow />
 
       {/* z-10 keeps all content above the canvas */}
       <div className="relative z-10 flex min-h-screen w-full flex-col lg:flex-row">
