@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { Briefcase, ChevronRight } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { experience } from "@/data/experience";
 
 export default function Experience() {
+  const [openMap, setOpenMap] = useState<Record<number, boolean>>({ 0: true, 1: true, 2: false, 3: false });
+
   return (
     <section id="experience" className="px-8 pb-8 pt-8 lg:px-16 lg:pb-8 lg:pt-8">
       <SectionLabel icon={Briefcase} glowColor="var(--icon-experience)">Work Experience</SectionLabel>
@@ -23,18 +26,8 @@ export default function Experience() {
           >
             {/* Entry row */}
             <div
-              className="flex flex-col lg:flex-row gap-2 lg:gap-10 py-8 rounded-lg transition-all duration-200 px-4 -mx-4"
+              className="flex flex-col lg:flex-row gap-2 lg:gap-10 py-8 rounded-lg px-4 -mx-4"
               style={{ backgroundColor: "transparent", border: "1px solid transparent" }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = "var(--color-bg-card)";
-                el.style.border = "1px solid var(--color-hover-border)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = "transparent";
-                el.style.border = "1px solid transparent";
-              }}
             >
               {/* Left: date + logo */}
               <div className="flex flex-col gap-4 flex-shrink-0 lg:w-36">
@@ -65,39 +58,57 @@ export default function Experience() {
                 )}
               </div>
 
-              {/* Right: title + bullets */}
+              {/* Right: toggle + bullets + tech */}
               <div className="flex flex-col gap-4 flex-1 min-w-0">
-                <h3
-                  className={`${older ? "text-sm" : "text-base"} font-bold leading-snug`}
-                  style={{ color: older ? "var(--color-text-muted)" : "var(--color-accent)" }}
+                <button
+                  onClick={() => setOpenMap(prev => ({ ...prev, [i]: !prev[i] }))}
+                  className="flex items-center gap-2 text-left w-full group"
+                  style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}
                 >
-                  <a
-                    href={exp.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {exp.company}
-                  </a>
-                  {" • "}
-                  {exp.title}.
-                </h3>
+                  <ChevronRight
+                    size={16}
+                    style={{
+                      color: "var(--color-accent)",
+                      transform: openMap[i] ? "rotate(90deg)" : "rotate(0deg)",
+                      transition: "transform 200ms ease",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span className={`${older ? "text-sm" : "text-base"} font-bold leading-snug`} style={{ color: older ? "var(--color-text-muted)" : "var(--color-accent)" }}>
+                    <a href={exp.url} target="_blank" rel="noopener noreferrer" className="hover:underline" onClick={e => e.stopPropagation()}>
+                      {exp.company}
+                    </a>
+                    {" • "}
+                    {exp.title}.
+                  </span>
+                </button>
 
-                <ul className="flex flex-col gap-2.5">
-                  {exp.bullets.map((bullet, j) => (
-                    <li
-                      key={j}
-                      className={`flex gap-3 ${older ? "text-xs" : "text-sm"} leading-relaxed`}
-                      style={{ color: older ? "var(--color-text-muted)" : "var(--color-text-body)" }}
-                    >
-                      <span
-                        className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                        style={{ backgroundColor: older ? "var(--color-text-muted)" : "var(--color-text-body)" }}
-                      />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+                {openMap[i] && (
+                  <>
+                    <ul className="flex flex-col gap-2.5">
+                      {exp.bullets.map((bullet, j) => (
+                        <li
+                          key={j}
+                          className={`${older ? "text-xs" : "text-sm"} leading-relaxed`}
+                          style={{ color: older ? "var(--color-text-muted)" : "var(--color-text-body)" }}
+                        >
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {exp.tech && (
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {exp.tech.map(t => (
+                          <span key={t} className="rounded-full px-3 py-1 text-xs font-semibold"
+                            style={{ backgroundColor: "var(--color-tag-tech-bg)", border: "1px solid var(--color-tag-tech-border)", color: "var(--color-tech)" }}>
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
             </div>
 

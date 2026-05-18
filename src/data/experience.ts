@@ -5,6 +5,7 @@ export interface ExperienceItem {
   range: string;
   bullets: string[];
   logo?: string;
+  tech?: string[];
 }
 
 export const experience: ExperienceItem[] = [
@@ -19,6 +20,7 @@ export const experience: ExperienceItem[] = [
       "Managed and mentored 25+ engineers across design, dev, testing, and deployment.",
       "Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
     ],
+    tech: ["Java", "Spring", "Bedrock", "LangChain", "RAG", "Microservices"],
   },
   {
     company: "Accenture Singapore",
@@ -31,6 +33,7 @@ export const experience: ExperienceItem[] = [
       "Drove initiative to replace a 24-hour batch job with a real-time API on Corppass, cutting processing time from overnight to instant.",
       "Owned technical design, code reviews, and release management; mentored juniors and managed vendor relationships.",
     ],
+    tech: ["Java", "Spring", "AWS", "Kubernetes", "Microservices"],
   },
   {
     company: "Accenture Philippines",
@@ -41,6 +44,7 @@ export const experience: ExperienceItem[] = [
       "Built and maintained client-facing applications across multiple financial services delivery tracks.",
       "Worked closely with business analysts to turn requirements into working software.",
     ],
+    tech: ["Java", "SQL"],
   },
   {
     company: "NEC Telecom Software Philippines",
@@ -51,5 +55,6 @@ export const experience: ExperienceItem[] = [
       "Developed Java applications for NEC's MS5000 telecom platform; awarded the Presidential Award for quality and delivery under tight timelines.",
       "Wrote functional and design specs; contributed to multiple release cycles of mission-critical telecom infrastructure.",
     ],
+    tech: ["Java", "Software Design"],
   },
 ];
