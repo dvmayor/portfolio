@@ -34,6 +34,9 @@ export default function RootLayout({
       lang="en"
       className={`${baiJamjuree.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}` }} />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

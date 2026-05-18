@@ -57,16 +57,12 @@ Or connect the repo at [vercel.com/new](https://vercel.com/new) — it auto-dete
 
 ---
 
-## Color palette
+## Color system
 
-| Role | Hex |
-|---|---|
-| Page background | `#dedede` |
-| Card surface | `#d4d4d4` |
-| Headings | `#000000` |
-| Body copy | `#595959` |
-| Muted / dates | `#a3a3a3` |
-| **Accent** | `#fc3d03` |
-| Borders | `#bfbfbf` |
+The site uses a dark/light token system defined in `src/app/globals.css`.
+
+Dark mode (default `:root`) uses a deep navy base (`#1e2336`) with a salmon accent (`rgb(255,162,139)`). Light mode overrides are applied via `html[data-theme="light"]` — set by a localStorage-backed theme toggle with an anti-FOUC inline script in `layout.tsx`.
+
+Semantic tag colors are split into three variants: outcome (teal), award (green), and tech (indigo/purple). Each variant has its own `--color-tag-*-bg`, `--color-tag-*-border`, and `--color-*` tokens for both modes.
 
 Font: [Bai Jamjuree](https://fonts.google.com/specimen/Bai+Jamjuree) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
