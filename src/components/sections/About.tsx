@@ -19,9 +19,9 @@ export default function About() {
       >
         {/* Headline — full width */}
         <h2 className="text-3xl font-bold leading-[1.1] tracking-tight lg:text-5xl" style={{ color: "var(--color-text-primary)" }}>
-          After 15 years{" "}
-          <span style={{ color: "var(--color-text-muted)", fontWeight: 600 }}>in banking,</span>
-          {" "}I&rsquo;m going deep on{" "}
+          Building teams that{" "}
+          <span style={{ color: "var(--color-accent)" }}>ship to millions.</span>
+          {" "}Going deep on{" "}
           <span style={{ color: "var(--color-accent)" }}>AI.</span>
         </h2>
 
