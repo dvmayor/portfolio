@@ -17,14 +17,11 @@ export default function About() {
         className="flex flex-col gap-6"
       >
         {/* Headline — full width */}
-        <h2
-          className="text-2xl font-bold leading-snug lg:text-3xl"
-          style={{ color: "var(--color-text-primary)" }}
-        >
-          I&rsquo;m an{" "}
-          <span style={{ color: "var(--color-accent)" }}>Engineering Manager</span>
-          {" "}who builds teams that ship to{" "}
-          <span style={{ color: "var(--color-highlight)" }}>millions of users.</span>
+        <h2 className="text-3xl font-bold leading-[1.1] tracking-tight lg:text-5xl" style={{ color: "var(--color-text-primary)" }}>
+          After 15 years{" "}
+          <span style={{ color: "var(--color-text-muted)", fontWeight: 600 }}>in banking,</span>
+          {" "}I&rsquo;m going deep on{" "}
+          <span style={{ color: "var(--color-accent)" }}>AI.</span>
         </h2>
 
         {/* Bio (left) + Photo (right) */}
@@ -34,47 +31,23 @@ export default function About() {
             style={{ color: "var(--color-text-body)" }}
           >
             <p>
-              I&rsquo;ve spent 15 years building software teams, mostly in Singapore,
-              now in Sydney. I managed the engineering side of{" "}
-              <a
-                href="https://www.uobgroup.com"
-                className="font-medium transition-colors duration-150 hover:underline"
-                style={{ color: "var(--color-accent)" }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                UOB&rsquo;s
-              </a>{" "}
-              digital banking across 5 countries and worked on{" "}
-              <a
-                href="https://www.singpass.gov.sg"
-                className="font-medium transition-colors duration-150 hover:underline"
-                style={{ color: "var(--color-accent)" }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Singpass
-              </a>{" "}
-              and{" "}
-              <a
-                href="https://www.corppass.gov.sg"
-                className="font-medium transition-colors duration-150 hover:underline"
-                style={{ color: "var(--color-accent)" }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Corppass
-              </a>
+              Engineering teams that shipped to millions across Singapore and Sydney. Led delivery for{" "}
+              <a href="https://www.uobgroup.com" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">UOB</a>
+              {" "}digital banking across 5 countries, worked on{" "}
+              <a href="https://www.singpass.gov.sg" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">Singpass</a>
+              {" "}and{" "}
+              <a href="https://www.corppass.gov.sg" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">Corppass</a>
               , the apps most Singapore residents use to log into government services.
             </p>
             <p>
               I like sitting between the tech and the product side, figuring out what
               to build, not just how. I still get into the code when it helps. Right now
-              I&rsquo;m deliberately going deeper on agentic AI. I piloted
-              an LLM-based document verification workflow in banking and want to keep building in that space.
+              I&rsquo;m deliberately going deeper on agentic AI. I&rsquo;ve piloted an 
+              LLM-based document verification workflow, saw its potential in business 
+              impact, and want to continue driving that kind of value.
             </p>
             <p>
-              I&rsquo;m on Australian PR, looking for an EM or senior engineering role in Sydney where I can own delivery and grow a team.
+              I&rsquo;m an Australian PR based in Sydney, looking for an Engineering Manager or Senior Engineering role where I can own delivery and grow a team.
             </p>
           </div>
 
