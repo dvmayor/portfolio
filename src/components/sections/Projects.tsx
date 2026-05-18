@@ -222,62 +222,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* ── Certifications ── */}
-        <div className="mt-16">
-          <motion.h3
-            initial={{ x: -24, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="mb-8 text-center text-sm font-semibold uppercase tracking-widest"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            Certifications
-          </motion.h3>
-          <motion.div
-            className="flex flex-wrap justify-center gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.5 }}
-            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
-          >
-            {[
-              {
-                href: "https://www.credly.com/earner/earned/badge/40692738-e555-4c61-8eea-f450978eb9e7",
-                img: "https://images.credly.com/size/680x680/images/ec23e41a-0f32-4a98-9c00-28925621b281/blob",
-                alt: "Generative AI Leader",
-              },
-              {
-                href: "https://www.credly.com/earner/earned/badge/ecda151c-c7e2-4641-899b-e906852b2b2f",
-                img: "https://images.credly.com/size/680x680/images/3e987079-3013-4359-9ad3-578c0b864e3d/image.png",
-                alt: "Certified SAFe 6 Agilist",
-              },
-              {
-                href: "https://www.credly.com/earner/earned/badge/d8c0fd85-f672-474c-b8d3-1d236a633445",
-                img: "https://images.credly.com/size/680x680/images/a2790314-008a-4c3d-9553-f5e84eb359ba/image.png",
-                alt: "Professional Scrum Master I",
-              },
-            ].map((cert) => (
-              <motion.a
-                key={cert.href}
-                href={cert.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={{ hidden: { y: 16, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: "easeOut" } } }}
-                whileHover={{ y: -4 }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={cert.img}
-                  alt={cert.alt}
-                  title={cert.alt}
-                  className="w-14 h-14 object-contain"
-                />
-              </motion.a>
-            ))}
-          </motion.div>
-        </div>
-
         {otherProjects.length > VISIBLE_OTHER && (
           <div className="mt-8 flex justify-center">
             <button

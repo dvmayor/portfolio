@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, ChevronRight } from "lucide-react";
+import { Briefcase, ChevronRight, ExternalLink } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { experience } from "@/data/experience";
+import { certifications } from "@/data/certifications";
 
 export default function Experience() {
   const [openMap, setOpenMap] = useState<Record<number, boolean>>({ 0: true, 1: true, 2: false, 3: false });
@@ -113,6 +114,83 @@ export default function Experience() {
           );
         })}
       </div>
+
+      {/* Credentials sub-section */}
+      <motion.div
+        initial={{ y: 16, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+        className="mt-12"
+      >
+        <div className="mb-4 flex items-center gap-3">
+          <span
+            className="font-mono text-[10px] uppercase"
+            style={{ color: "var(--color-text-muted)", letterSpacing: "0.22em" }}
+          >
+            Credentials
+          </span>
+          <span
+            className="h-px flex-1"
+            style={{ backgroundColor: "var(--color-border-dark)" }}
+          />
+        </div>
+
+        <ul className="flex flex-col">
+          {certifications.map((c, i) => (
+            <li
+              key={c.name}
+              className="flex items-baseline justify-between gap-4 py-3"
+              style={{
+                borderTop: i === 0 ? "1px solid var(--color-border-dark)" : "none",
+                borderBottom: "1px solid var(--color-border-dark)",
+              }}
+            >
+              <div className="flex items-baseline gap-2 min-w-0 flex-1">
+                <span
+                  className="text-sm font-semibold truncate"
+                  style={{ color: "var(--color-text-primary)" }}
+                >
+                  {c.name}
+                </span>
+                <span
+                  className="text-xs whitespace-nowrap"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  · {c.issuer}
+                </span>
+              </div>
+              <div className="flex items-baseline gap-4 flex-shrink-0">
+                <span
+                  className="font-mono text-[10px]"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {c.year}
+                </span>
+                <a
+                  href={c.verifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs transition-colors duration-150"
+                  style={{ color: "var(--color-accent)" }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+                >
+                  Verify
+                  <ExternalLink size={11} />
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <p
+          className="mt-3 font-mono text-[9px] uppercase"
+          style={{ color: "var(--color-text-muted)", letterSpacing: "0.08em" }}
+        >
+          Verified via Credly
+        </p>
+      </motion.div>
 
       {/* Resume link */}
       <motion.div
