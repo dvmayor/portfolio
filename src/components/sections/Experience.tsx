@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, ChevronRight, ExternalLink } from "lucide-react";
+import { Briefcase, ChevronRight, ExternalLink, BarChart2 } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
+import Pill from "@/components/ui/Pill";
 import { experience } from "@/data/experience";
 import { certifications } from "@/data/certifications";
 
@@ -97,6 +98,47 @@ export default function Experience() {
                         </li>
                       ))}
                     </ul>
+
+                    {exp.initiatives && exp.initiatives.length > 0 && (
+                      <div className="mt-4 ml-[22px]">
+                        <div
+                          className="mb-3 font-mono text-[10px] uppercase"
+                          style={{ color: "var(--color-text-muted)", letterSpacing: "0.22em" }}
+                        >
+                          Initiatives · {exp.initiatives.length}
+                        </div>
+                        <div className="flex flex-col gap-2.5">
+                          {exp.initiatives.map((init) => (
+                            <article
+                              key={init.name}
+                              className="rounded-md p-3.5"
+                              style={{ border: "1px solid var(--color-border-dark)" }}
+                            >
+                              <h4
+                                className="text-sm font-bold"
+                                style={{ color: "var(--color-text-primary)" }}
+                              >
+                                {init.name}
+                              </h4>
+                              <p
+                                className="mt-1.5 text-xs leading-relaxed"
+                                style={{ color: "var(--color-text-body)" }}
+                              >
+                                {init.description}
+                              </p>
+                              <div className="mt-3 flex flex-wrap gap-1.5">
+                                {init.outcomes?.map((o) => (
+                                  <Pill key={o} variant="outcome" icon={BarChart2}>{o}</Pill>
+                                ))}
+                                {init.tech.map((t) => (
+                                  <Pill key={t} variant="tech">{t}</Pill>
+                                ))}
+                              </div>
+                            </article>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                   </>
                 )}
