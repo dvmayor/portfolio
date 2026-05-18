@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
+import Pill from "@/components/ui/Pill";
 
 export default function About() {
   return (
@@ -68,33 +69,13 @@ export default function About() {
           <div className="flex flex-wrap gap-2">
             <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Stack</span>
             {["AWS", "Agentic AI", "Python", "React", "TypeScript", "Java"].map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full px-3 py-1 text-xs font-semibold"
-                style={{
-                  backgroundColor: "var(--color-tag-bg)",
-                  border: "1px solid var(--color-tag-border)",
-                  color: "var(--color-accent)",
-                }}
-              >
-                {skill}
-              </span>
+              <Pill key={skill} variant="tech">{skill}</Pill>
             ))}
           </div>
           <div className="flex flex-wrap gap-2">
             <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Domain</span>
             {["Digital Banking", "Identity & Access", "Agile / SAFe"].map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full px-3 py-1 text-xs font-semibold"
-                style={{
-                  backgroundColor: "var(--color-tag-bg)",
-                  border: "1px solid var(--color-tag-border)",
-                  color: "var(--color-accent)",
-                }}
-              >
-                {skill}
-              </span>
+              <Pill key={skill} variant="tech">{skill}</Pill>
             ))}
           </div>
         </div>

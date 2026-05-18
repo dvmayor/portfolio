@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, BarChart2, Code2 } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Tag from "@/components/ui/Tag";
+import Pill from "@/components/ui/Pill";
 import { featuredProjects, otherProjects } from "@/data/projects";
 
 const VISIBLE_OTHER = 6;
@@ -124,18 +124,7 @@ export default function Projects() {
                 {/* Outcome pills */}
                 <div className="flex flex-wrap gap-2">
                   {project.outcomes.map((o) => (
-                    <span
-                      key={o}
-                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold"
-                      style={{
-                        backgroundColor: "var(--color-tag-bg)",
-                        color: "var(--color-accent)",
-                        border: "1px solid var(--color-tag-border)",
-                      }}
-                    >
-                      <BarChart2 size={11} />
-                      {o}
-                    </span>
+                    <Pill key={o} variant="outcome" icon={BarChart2}>{o}</Pill>
                   ))}
                 </div>
 
@@ -246,7 +235,7 @@ export default function Projects() {
               {/* Tech tags */}
               <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
                 {project.tech.map((t) => (
-                  <Tag key={t} label={t} />
+                  <Pill key={t} variant="tech">{t}</Pill>
                 ))}
               </div>
             </motion.div>
