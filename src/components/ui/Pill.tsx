@@ -1,6 +1,6 @@
 import { type LucideIcon } from "lucide-react";
 
-type Variant = "outcome" | "award" | "tech";
+type Variant = "tech" | "outcome" | "domain";
 
 interface PillProps {
   variant: Variant;
@@ -8,31 +8,61 @@ interface PillProps {
   children: React.ReactNode;
 }
 
-const variantStyles: Record<Variant, { bg: string; border: string; color: string }> = {
-  outcome: {
-    bg: "var(--color-tag-outcome-bg)",
-    border: "var(--color-tag-outcome-border)",
-    color: "var(--color-outcome)",
-  },
-  award: {
-    bg: "var(--color-tag-award-bg)",
-    border: "var(--color-tag-award-border)",
-    color: "var(--color-award)",
-  },
-  tech: {
-    bg: "var(--color-tag-tech-bg)",
-    border: "var(--color-tag-tech-border)",
-    color: "var(--color-tech)",
-  },
+const pillBase: React.CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "6px",
+};
+
+function techStyle(): React.CSSProperties {
+  return {
+    ...pillBase,
+    borderRadius: "9999px",
+    padding: "4px 11px",
+    fontSize: "11px",
+    fontWeight: 600,
+    border: "1px solid var(--color-tag-tech-border)",
+    backgroundColor: "var(--color-tag-tech-bg)",
+    color: "var(--color-tag-tech-text)",
+  };
+}
+
+function outcomeStyle(): React.CSSProperties {
+  return {
+    ...pillBase,
+    borderRadius: "9999px",
+    padding: "4px 11px",
+    fontSize: "11px",
+    fontWeight: 600,
+    border: "1px solid var(--color-tag-outcome-border)",
+    backgroundColor: "var(--color-tag-outcome-bg)",
+    color: "var(--color-tag-outcome-text)",
+  };
+}
+
+function domainStyle(): React.CSSProperties {
+  return {
+    ...pillBase,
+    borderRadius: "4px",
+    padding: "3px 9px",
+    fontSize: "10px",
+    fontWeight: 500,
+    fontFamily: "var(--font-mono)",
+    border: "1px solid var(--color-tag-domain-border)",
+    backgroundColor: "transparent",
+    color: "var(--color-tag-domain-text)",
+  };
+}
+
+const styleMap: Record<Variant, () => React.CSSProperties> = {
+  tech: techStyle,
+  outcome: outcomeStyle,
+  domain: domainStyle,
 };
 
 export default function Pill({ variant, icon: Icon, children }: PillProps) {
-  const s = variantStyles[variant];
   return (
-    <span
-      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold"
-      style={{ backgroundColor: s.bg, border: `1px solid ${s.border}`, color: s.color }}
-    >
+    <span style={styleMap[variant]()}>
       {Icon && <Icon size={11} />}
       {children}
     </span>

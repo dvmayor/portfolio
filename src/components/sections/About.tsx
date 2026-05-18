@@ -75,7 +75,7 @@ export default function About() {
           <div className="flex flex-wrap gap-2">
             <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Domain</span>
             {["Digital Banking", "Identity & Access", "Agile / SAFe"].map((skill) => (
-              <Pill key={skill} variant="tech">{skill}</Pill>
+              <Pill key={skill} variant="domain">{skill}</Pill>
             ))}
           </div>
         </div>

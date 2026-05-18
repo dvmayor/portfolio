@@ -50,15 +50,16 @@
   --color-highlight:      rgb(126, 231, 135);
   --color-divider-accent: rgb(255, 255, 255);
   --color-divider-muted:  rgba(86, 95, 137, 0.3);
-  --color-tag-outcome-bg:    hsla(187, 55%, 52%, 0.10);
-  --color-tag-outcome-border: hsla(187, 55%, 52%, 0.30);
-  --color-tag-award-bg:    hsla(141, 68%, 67%, 0.10);
-  --color-tag-award-border: hsla(141, 68%, 67%, 0.30);
-  --color-tag-tech-bg:    rgba(147, 154, 255, 0.12);
-  --color-tag-tech-border: rgba(147, 154, 255, 0.30);
-  --color-outcome:  rgb(61, 185, 201);
-  --color-award:    rgb(126, 231, 135);
-  --color-tech:     rgb(147, 154, 255);
+  --color-tag-tech-bg:     hsla(187, 55%, 52%, 0.10);
+  --color-tag-tech-border: hsla(187, 55%, 52%, 0.30);
+  --color-tag-tech-text:   #3db9c9;
+
+  --color-tag-outcome-bg:     hsla(141, 68%, 67%, 0.10);
+  --color-tag-outcome-border: hsla(141, 68%, 67%, 0.30);
+  --color-tag-outcome-text:   #7ee787;
+
+  --color-tag-domain-border:  rgb(65, 72, 104);
+  --color-tag-domain-text:    rgb(122, 132, 174);
 }
 
 /* Light mode overrides */
@@ -83,15 +84,16 @@ html[data-theme="light"] {
   --color-highlight:      rgb(22, 140, 50);
   --color-divider-accent: #b93719;
   --color-divider-muted:  #d9afa5;
-  --color-tag-outcome-bg:    rgba(35, 148, 162, 0.08);
-  --color-tag-outcome-border: rgba(35, 148, 162, 0.30);
-  --color-tag-award-bg:    rgba(22, 140, 50, 0.08);
-  --color-tag-award-border: rgba(22, 140, 50, 0.30);
-  --color-tag-tech-bg:    rgba(70, 60, 180, 0.07);
-  --color-tag-tech-border: rgba(70, 60, 180, 0.30);
-  --color-outcome:  rgb(35, 148, 162);
-  --color-award:    rgb(22, 140, 50);
-  --color-tech:     rgb(70, 60, 180);
+  --color-tag-tech-bg:     rgba(35, 148, 162, 0.08);
+  --color-tag-tech-border: rgba(35, 148, 162, 0.30);
+  --color-tag-tech-text:   rgb(35, 148, 162);
+
+  --color-tag-outcome-bg:     rgba(22, 140, 50, 0.08);
+  --color-tag-outcome-border: rgba(22, 140, 50, 0.30);
+  --color-tag-outcome-text:   rgb(22, 140, 50);
+
+  --color-tag-domain-border:  rgba(0, 0, 0, 0.15);
+  --color-tag-domain-text:    rgb(100, 110, 155);
 }
 
 html {
