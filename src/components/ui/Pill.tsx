@@ -43,11 +43,10 @@ function outcomeStyle(): React.CSSProperties {
 function domainStyle(): React.CSSProperties {
   return {
     ...pillBase,
-    borderRadius: "4px",
-    padding: "3px 9px",
-    fontSize: "10px",
-    fontWeight: 500,
-    fontFamily: "var(--font-mono)",
+    borderRadius: "9999px",
+    padding: "4px 11px",
+    fontSize: "11px",
+    fontWeight: 600,
     border: "1px solid var(--color-tag-domain-border)",
     backgroundColor: "transparent",
     color: "var(--color-tag-domain-text)",
