@@ -205,15 +205,12 @@ export default function Experience() {
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest transition-colors duration-150"
-          style={{ color: "var(--color-text-primary)" }}
+          style={{ color: "var(--color-accent)" }}
+          onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)")}
+          onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-accent)")}
         >
           View Full Resume
-          <span
-            className="transition-transform duration-150 group-hover:translate-x-1"
-            style={{ color: "var(--color-accent)" }}
-          >
-            →
-          </span>
+          <span className="transition-transform duration-150 group-hover:translate-x-1">→</span>
         </a>
       </motion.div>
     </section>
