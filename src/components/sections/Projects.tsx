@@ -82,7 +82,7 @@ export default function Projects() {
                       onMouseEnter={(e) => {
                         (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
                         const arrow = e.currentTarget.querySelector(".proj-arrow") as HTMLElement;
-                        if (arrow) arrow.style.transform = "translateX(4px)";
+                        if (arrow) arrow.style.transform = "translate(3px, -3px)";
                       }}
                       onMouseLeave={(e) => {
                         (e.currentTarget as HTMLElement).style.color = "var(--color-text-primary)";
@@ -179,7 +179,7 @@ export default function Projects() {
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
                       const arrow = e.currentTarget.querySelector(".proj-arrow") as HTMLElement;
-                      if (arrow) arrow.style.transform = "translateX(4px)";
+                      if (arrow) arrow.style.transform = "translate(3px, -3px)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLElement).style.color = "var(--color-text-muted)";
