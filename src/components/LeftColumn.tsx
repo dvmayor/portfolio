@@ -128,7 +128,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="text-sm">{item.label}</span>
+                <span className="text-sm uppercase tracking-widest">{item.label}</span>
               </motion.button>
             );
           })}
