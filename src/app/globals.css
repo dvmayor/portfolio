@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  /* Backgrounds — dark navy from alejandro-gomez.vercel.app */
+  --color-surface:       rgb(30, 35, 54);    /* #1e2336 — page bg */
+  --color-card:          rgb(41, 46, 66);    /* #292e42 — card / hover */
+
+  /* Text */
+  --color-primary:       rgb(255, 255, 255); /* #ffffff — headings */
+  --color-body:          rgb(169, 177, 214); /* #a9b1d6 — body copy */
+  --color-muted:         rgb(122, 132, 174); /* #7a84ae — dates, meta */
+  --color-light:         rgb(255, 255, 255); /* #ffffff */
+
+  /* Accent — salmon from the Work Experience headline */
+  --color-accent:        rgb(255, 162, 139); /* #ffa28b */
+  --color-accent-deep:   rgb(255, 130, 100); /* hover */
+
+  /* Borders */
+  --color-border:        rgb(41, 46, 66);    /* #292e42 */
+  --color-border-strong: rgb(65, 72, 104);   /* #414868 */
+  --color-hover-border:  rgb(41, 46, 66);
+
+  /* Buttons */
+  --color-btn:           rgb(61, 185, 201);  /* #3db9c9 teal */
+  --color-btn-label:     rgb(30, 35, 54);    /* dark text on teal */
+
+  /* Fonts */
+  --font-sans: var(--font-bai-jamjuree);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+/* Spec-named aliases — dark mode (default) */
+:root {
+  --color-tag-bg: hsla(228, 50%, 50%, 0.12);
+  --color-tag-border: hsla(228, 50%, 60%, 0.25);
+  --color-card-hover-shadow: 0 8px 24px -6px hsla(14, 98%, 50%, 0.15);
+  --color-bg:             rgb(30, 35, 54);
+  --color-bg-card:        rgb(41, 46, 66);
+  --color-bg-nav:         rgb(30, 35, 54);
+  --color-text-primary:   rgb(255, 255, 255);
+  --color-text-body:      rgb(169, 177, 214);
+  --color-text-muted:     rgb(122, 132, 174);
+  --color-text-light:     rgb(255, 255, 255);
+  --color-accent:         rgb(255, 162, 139);
+  --color-accent-hover:   rgb(255, 130, 100);
+  --color-border:         rgb(41, 46, 66);
+  --color-border-dark:    rgb(65, 72, 104);
+  --color-btn-bg:         rgb(61, 185, 201);
+  --color-btn-text:       rgb(30, 35, 54);
+  --color-highlight:      rgb(126, 231, 135);
+  --color-divider-accent: rgb(255, 255, 255);
+  --color-divider-muted:  rgba(86, 95, 137, 0.3);
+}
+
+/* Light mode overrides */
+html[data-theme="light"] {
+  --color-tag-bg:         rgba(210, 75, 45, 0.07);
+  --color-tag-border:     rgba(210, 75, 45, 0.3);
+  --color-card-hover-shadow: 0 4px 16px -4px rgba(60, 63, 90, 0.12);
+  --color-hover-border:   transparent;
+  --color-bg:             #f4f5f8;
+  --color-bg-card:        #ffffff;
+  --color-bg-nav:         #f4f5f8;
+  --color-text-primary:   #1a1c2e;
+  --color-text-body:      #3c3f5a;
+  --color-text-muted:     rgb(100, 110, 155);
+  --color-text-light:     rgb(22, 27, 58);
+  --color-accent:         rgb(210, 75, 45);
+  --color-accent-hover:   rgb(185, 55, 25);
+  --color-border:         rgb(200, 204, 225);
+  --color-border-dark:    rgb(160, 168, 210);
+  --color-btn-bg:         rgb(35, 148, 162);
+  --color-btn-text:       rgb(255, 255, 255);
+  --color-highlight:      rgb(22, 140, 50);
+  --color-divider-accent: #1a1c2e;
+  --color-divider-muted:  #c8cce1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section icon color tokens */
+:root {
+  --icon-about:      rgb(126, 231, 135);
+  --icon-experience: rgb(248, 180, 100);
+  --icon-projects:   rgb(147, 154, 255);
+  --icon-contact:    rgb(61, 185, 201);
+}
+
+html[data-theme="light"] {
+  --icon-about:      rgb(18, 120, 40);
+  --icon-experience: rgb(180, 100, 20);
+  --icon-projects:   rgb(70, 60, 180);
+  --icon-contact:    rgb(15, 120, 140);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-body);
+  font-family: var(--font-bai-jamjuree), system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
