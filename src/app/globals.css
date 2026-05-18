@@ -166,6 +166,7 @@ html[data-theme="light"] .now-dot {
   50%      { box-shadow: 0 0 0 5px rgba(22, 140, 50, 0.06); }
 }
 .status-dot {
+  display: inline-block;
   width: 7px;
   height: 7px;
   border-radius: 50%;
