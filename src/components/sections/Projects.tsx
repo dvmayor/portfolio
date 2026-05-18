@@ -90,7 +90,7 @@ export default function Projects() {
                         if (arrow) arrow.style.transform = "translateX(0)";
                       }}>
                       <span>{project.name}</span>
-                      <span className="proj-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "16px", lineHeight: 1 }}>→</span>
+                      <span className="proj-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "16px", lineHeight: 1 }}>↗</span>
                     </a>
                   ) : project.name}
                 </h3>
@@ -187,7 +187,7 @@ export default function Projects() {
                       if (arrow) arrow.style.transform = "translateX(0)";
                     }}
                   >
-                    <span className="proj-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "16px", lineHeight: 1 }}>→</span>
+                    <span className="proj-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "16px", lineHeight: 1 }}>↗</span>
                   </a>
                 )}
               </div>
