@@ -76,23 +76,8 @@ export default function Experience() {
                     }}
                   />
                   <span className={`${older ? "text-sm" : "text-base"} font-bold leading-snug`} style={{ color: older ? "var(--color-text-muted)" : "var(--color-accent)" }}>
-                    <a
-                      href={exp.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-baseline gap-1"
-                      onClick={e => e.stopPropagation()}
-                      onMouseEnter={e => {
-                        const arrow = e.currentTarget.querySelector(".exp-arrow") as HTMLElement;
-                        if (arrow) arrow.style.transform = "translate(2px, -2px)";
-                      }}
-                      onMouseLeave={e => {
-                        const arrow = e.currentTarget.querySelector(".exp-arrow") as HTMLElement;
-                        if (arrow) arrow.style.transform = "translate(0, 0)";
-                      }}
-                    >
+                    <a href={exp.url} target="_blank" rel="noopener noreferrer" className="hover:underline" onClick={e => e.stopPropagation()}>
                       {exp.company}
-                      <span className="exp-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "0.75em" }}>↗</span>
                     </a>
                     {" • "}
                     {exp.title}.
