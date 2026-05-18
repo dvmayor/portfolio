@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, ChevronRight } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Pill from "@/components/ui/Pill";
 import { experience } from "@/data/experience";
 
 export default function Experience() {
@@ -98,13 +97,6 @@ export default function Experience() {
                       ))}
                     </ul>
 
-                    {exp.tech && (
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {exp.tech.map(t => (
-                          <Pill key={t} variant="tech">{t}</Pill>
-                        ))}
-                      </div>
-                    )}
                   </>
                 )}
               </div>
