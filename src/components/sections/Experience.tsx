@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BarChart2, Briefcase, ChevronRight, ShieldAlert, Bot, UserCheck, Cloud, QrCode, Radio, HeartPulse, type LucideIcon } from "lucide-react";
+import { BarChart2, Briefcase, ChevronRight, ShieldAlert, Bot, UserCheck, Cloud, QrCode, Radio, HeartPulse, Download, type LucideIcon } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Pill from "@/components/ui/Pill";
 import { experience, type Initiative } from "@/data/experience";
@@ -228,19 +228,15 @@ export default function Experience() {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-        className="mt-6"
+        className="mt-14"
       >
         <a
           href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest transition-colors duration-150"
-          style={{ color: "var(--color-accent)" }}
-          onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)")}
-          onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-accent)")}
+          download="David_Reuel_Villamayor_CV.pdf"
+          className="btn-download inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold"
         >
-          View Full Resume
-          <span className="transition-transform duration-150 group-hover:translate-x-1">→</span>
+          <Download size={14} />
+          Download CV
         </a>
       </motion.div>
     </section>

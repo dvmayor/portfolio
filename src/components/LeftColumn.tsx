@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Sun, Moon } from "lucide-react";
 import IconLink from "@/components/ui/IconLink";
@@ -8,52 +8,74 @@ import { GitHubIcon, LinkedInIcon } from "@/components/ui/SocialIcons";
 import { type SectionId } from "@/hooks/useActiveSection";
 import { useTheme } from "@/hooks/useTheme";
 
-const ROLES = ["Engineering Manager", "Senior Engineer", "Tech Lead"];
-const TYPE_MS = 90;
-const DELETE_MS = 55;
-const PAUSE_TYPED = 1600;
-const PAUSE_DELETED = 320;
+const EMAIL = "davidreuelvillamayor@gmail.com";
 
-function CyclingRole() {
-  const [display, setDisplay] = useState("");
-  const [roleIdx, setRoleIdx] = useState(0);
-  const [deleting, setDeleting] = useState(false);
+function EmailCopyButton() {
+  const [copied, setCopied] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
-  useEffect(() => {
-    const current = ROLES[roleIdx];
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
-    if (!deleting && display === current) {
-      const t = setTimeout(() => setDeleting(true), PAUSE_TYPED);
-      return () => clearTimeout(t);
-    }
-
-    if (deleting && display === "") {
-      const t = setTimeout(() => {
-        setDeleting(false);
-        setRoleIdx((i) => (i + 1) % ROLES.length);
-      }, PAUSE_DELETED);
-      return () => clearTimeout(t);
-    }
-
-    const t = setTimeout(() => {
-      setDisplay(deleting
-        ? current.slice(0, display.length - 1)
-        : current.slice(0, display.length + 1)
-      );
-    }, deleting ? DELETE_MS : TYPE_MS);
-    return () => clearTimeout(t);
-  }, [display, roleIdx, deleting]);
+  const tooltipVisible = hovered || copied;
+  const tooltipText = copied ? "Copied!" : "Copy my email";
 
   return (
-    <span style={{ color: "var(--color-accent)" }}>
-      {display}
-      <motion.span
-        animate={{ opacity: [1, 1, 0, 0] }}
-        transition={{ duration: 0.8, repeat: Infinity, ease: "linear", times: [0, 0.45, 0.5, 0.95] }}
-        aria-hidden="true"
-        style={{ marginLeft: "1px", fontWeight: 300 }}
-      >|</motion.span>
-    </span>
+    <div className="relative">
+      <a
+        href={`mailto:${EMAIL}`}
+        aria-label="Copy email address"
+        onClick={(e) => { e.preventDefault(); handleCopy(); }}
+        className="transition-colors duration-200"
+        style={{ color: hovered || copied ? "var(--color-accent)" : "var(--color-text-muted)" }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <Mail size={20} />
+      </a>
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: tooltipVisible ? 1 : 0, y: tooltipVisible ? 0 : 6 }}
+        transition={{ duration: 0.15 }}
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-xs font-semibold whitespace-nowrap pointer-events-none"
+        style={{ backgroundColor: "var(--color-accent)", color: "var(--color-bg)" }}
+      >
+        {tooltipText}
+      </motion.div>
+    </div>
+  );
+}
+
+
+function ThemeToggleButton({ toggle, theme }: { toggle: () => void; theme: string }) {
+  const [hovered, setHovered] = useState(false);
+  const label = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+
+  return (
+    <div className="relative ml-auto">
+      <button
+        onClick={toggle}
+        aria-label="Toggle theme"
+        className="transition-colors duration-200"
+        style={{ color: hovered ? "var(--color-highlight)" : "var(--color-text-muted)", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex" }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+        transition={{ duration: 0.15 }}
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-xs font-semibold whitespace-nowrap pointer-events-none"
+        style={{ backgroundColor: "var(--color-highlight)", color: "var(--color-bg)" }}
+      >
+        {label}
+      </motion.div>
+    </div>
   );
 }
 
@@ -128,17 +150,18 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
               className="flex items-center gap-2 font-medium"
               style={{ color: "var(--color-text-primary)" }}
             >
+              <span>Open to</span>
               <span style={{ width: "14px", display: "inline-flex", justifyContent: "center", flexShrink: 0 }}>
                 <span className="status-dot" aria-hidden="true" />
               </span>
-              <span>Open to <CyclingRole /></span>
+              <span style={{ color: "var(--color-highlight)" }}>EM & Tech Lead roles</span>
             </div>
             <div
               className="flex items-center gap-2"
               style={{ color: "var(--color-text-body)" }}
             >
               <span aria-hidden="true" style={{ width: "14px", display: "inline-flex", justifyContent: "center", flexShrink: 0 }}>📍</span>
-              Sydney, AU
+              Sydney, AU · Australian PR
             </div>
           </motion.div>
         </div>
@@ -242,37 +265,10 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
             <Icon size={20} />
           </a>
         ))}
-        <a
-          href="mailto:davidreuelvillamayor@gmail.com"
-          aria-label="Email"
-          className="transition-colors duration-200"
-          style={{ color: "var(--color-text-muted)" }}
-          onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLElement).style.color = "var(--color-accent)")
-          }
-          onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLElement).style.color = "var(--color-text-muted)")
-          }
-        >
-          <Mail size={20} />
-        </a>
+        <EmailCopyButton />
 
         {/* Theme toggle */}
-        <button
-          onClick={toggle}
-          aria-label="Toggle theme"
-          className="ml-auto transition-colors duration-200"
-          style={{ color: "var(--color-text-muted)" }}
-          title="Toggle Display Mode"
-          onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLElement).style.color = "var(--color-highlight)")
-          }
-          onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLElement).style.color = "var(--color-text-muted)")
-          }
-        >
-          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+        <ThemeToggleButton toggle={toggle} theme={theme} />
       </motion.div>
     </motion.aside>
   );

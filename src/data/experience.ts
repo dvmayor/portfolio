@@ -23,9 +23,9 @@ export const experience: ExperienceItem[] = [
     title: "Technical Lead",
     range: "May 2023 -Aug 2025",
     bullets: [
-      "Managed and mentored 25+ engineers across design, dev, testing, and deployment.",
-      "Led end-to-end engineering delivery for UOB's digital banking platform across 5 ASEAN countries (mobile, web, and branch channels), serving 8 million customers.",
-      "Piloted an LLM-backed document verification workflow (Bedrock, LangChain, RAG) to replace manual eligibility checks in account opening, targeting 25% reduction in staff processing time.",
+      "Managed 3 cross-functional squads (20+ engineers) across design, dev, testing, and deployment.",
+      "Owned end-to-end engineering delivery for UOB's digital banking platform across 5 ASEAN countries (mobile, web, and branch channels), serving 8 million customers.",
+      "Directed the design and delivery of an LLM-backed document verification pilot (Bedrock, LangChain, RAG), replacing manual eligibility checks in account opening and targeting a 25% reduction in staff processing time.",
       "Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
     ],
     tech: ["Java", "Spring", "Bedrock", "LangChain", "RAG", "Microservices"],
@@ -58,10 +58,10 @@ export const experience: ExperienceItem[] = [
     title: "Application Development Specialist",
     range: "Nov 2016 -Dec 2022",
     bullets: [
-      "Delivered Singpass enhancements for 5M+ users, including QR login supporting millions of daily auth requests.",
-      "Led full AWS Cloud migration of Corppass, streamlining access for 200k+ businesses.",
-      "Drove initiative to replace a 24-hour batch job with a real-time API on Corppass, cutting processing time from overnight to instant.",
-      "Owned technical design, code reviews, and release management; mentored juniors and managed vendor relationships.",
+      "Drove delivery of Singpass enhancements for 5M+ users, including QR login handling millions of daily authentication requests.",
+      "Directed the full AWS Cloud migration of Corppass, streamlining access for 200k+ businesses.",
+      "Championed a modernisation initiative on Corppass to eliminate overnight batch processing, delivering real-time results for 200k+ businesses.",
+      "Owned technical design decisions, code reviews, and release governance; mentored junior engineers and managed vendor relationships.",
     ],
     tech: ["Java", "Spring", "AWS", "Kubernetes", "Microservices"],
     initiatives: [

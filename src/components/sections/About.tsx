@@ -42,16 +42,16 @@ export default function About() {
             </p>
             <p>
               I like sitting between the tech and the product side, figuring out what
-              to build, not just how. I still get into the code when it helps. I&rsquo;ve
-              piloted an LLM-based document verification workflow, saw its potential in
-              business impact, and want to continue driving that kind of value.
+              to build, not just how. I go into the code when the team needs it. I
+              piloted an LLM-based document verification workflow, saw the business
+              impact firsthand, and want to keep driving that kind of value.
             </p>
             <p>
-              After leaving HCLTech in Aug 2025, I took time off to travel and pick up
-              new certifications, then moved to Sydney as an Australian PR in Jan 2026.
-              Currently going deeper on agentic AI (Bedrock, LangChain, RAG) and looking
-              for an Engineering Manager or Senior Engineering role where I can own
-              delivery and grow a team.
+              After leaving HCLTech in Aug 2025, I traveled, picked up new
+              certifications, and moved to Sydney as an Australian PR in Jan 2026.
+              Going deeper on agentic AI (Bedrock, LangChain, RAG) and open to
+              Engineering Manager roles where delivery, team growth, and AI adoption
+              are the mandate.
             </p>
           </div>
 
@@ -70,9 +70,15 @@ export default function About() {
         {/* Skills bar */}
         <div className="flex flex-col gap-3 lg:max-w-3xl">
           <div className="flex flex-wrap gap-2">
-            <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Stack</span>
-            {["AWS", "Agentic AI", "Python", "React", "TypeScript", "Java"].map((skill) => (
-              <Pill key={skill} variant="tech">{skill}</Pill>
+            <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Leadership</span>
+            {["Cross-functional", "Mentoring", "Technical Roadmaps", "Delivery at Scale"].map((skill) => (
+              <Pill key={skill} variant="domain">{skill}</Pill>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Technical</span>
+            {["AWS", "Agentic AI", "Python", "Typescript", "React", "Java"].map((skill) => (
+              <Pill key={skill} variant="domain">{skill}</Pill>
             ))}
           </div>
           <div className="flex flex-wrap gap-2">
@@ -96,9 +102,9 @@ export default function About() {
                 rel="noopener noreferrer"
                 aria-label={logo.alt}
                 className="flex items-center rounded px-2 py-1 transition-opacity duration-150"
-                style={{ backgroundColor: "rgba(255,255,255,0.93)" }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+                style={{ backgroundColor: "rgba(255,255,255,0.93)", opacity: "0.75" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
