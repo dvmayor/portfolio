@@ -19,7 +19,7 @@ const INITIATIVE_ICONS: Record<string, LucideIcon> = {
 };
 
 export default function Experience() {
-  const [openMap, setOpenMap] = useState<Record<number, boolean>>({ 0: true, 1: true, 2: true, 3: true });
+  const [openMap, setOpenMap] = useState<Record<number, boolean>>({ 0: true, 1: true, 2: false, 3: false });
 
   return (
     <section id="experience" className="px-8 pb-8 pt-8 lg:px-16 lg:pb-8 lg:pt-8">
@@ -38,7 +38,7 @@ export default function Experience() {
           >
             {/* Entry row */}
             <div
-              className="flex flex-col lg:flex-row gap-2 lg:gap-10 py-8 rounded-lg px-4 -mx-4"
+              className={`flex flex-col lg:flex-row gap-2 lg:gap-10 rounded-lg px-4 -mx-4 pb-8 ${i === 0 ? "pt-0" : "pt-8"}`}
               style={{ backgroundColor: "transparent", border: "1px solid transparent" }}
             >
               {/* Left: date + logo */}
@@ -118,13 +118,6 @@ export default function Experience() {
               </div>
             </div>
 
-            {/* Divider (not after last item) */}
-            {i < experience.length - 1 && (
-              <div
-                className="h-px w-full"
-                style={{ backgroundColor: "var(--color-border)" }}
-              />
-            )}
           </motion.div>
           );
         })}
