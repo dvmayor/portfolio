@@ -1,11 +1,61 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, Sun, Moon } from "lucide-react";
 import IconLink from "@/components/ui/IconLink";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/SocialIcons";
 import { type SectionId } from "@/hooks/useActiveSection";
 import { useTheme } from "@/hooks/useTheme";
+
+const ROLES = ["Engineering Manager", "Senior Engineer", "Tech Lead"];
+const TYPE_MS = 90;
+const DELETE_MS = 55;
+const PAUSE_TYPED = 1600;
+const PAUSE_DELETED = 320;
+
+function CyclingRole() {
+  const [display, setDisplay] = useState("");
+  const [roleIdx, setRoleIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = ROLES[roleIdx];
+
+    if (!deleting && display === current) {
+      const t = setTimeout(() => setDeleting(true), PAUSE_TYPED);
+      return () => clearTimeout(t);
+    }
+
+    if (deleting && display === "") {
+      const t = setTimeout(() => {
+        setDeleting(false);
+        setRoleIdx((i) => (i + 1) % ROLES.length);
+      }, PAUSE_DELETED);
+      return () => clearTimeout(t);
+    }
+
+    const t = setTimeout(() => {
+      setDisplay(deleting
+        ? current.slice(0, display.length - 1)
+        : current.slice(0, display.length + 1)
+      );
+    }, deleting ? DELETE_MS : TYPE_MS);
+    return () => clearTimeout(t);
+  }, [display, roleIdx, deleting]);
+
+  return (
+    <span style={{ color: "var(--color-accent)" }}>
+      {display}
+      <motion.span
+        animate={{ opacity: [1, 1, 0, 0] }}
+        transition={{ duration: 0.8, repeat: Infinity, ease: "linear", times: [0, 0.45, 0.5, 0.95] }}
+        aria-hidden="true"
+        style={{ marginLeft: "1px", fontWeight: 300 }}
+      >|</motion.span>
+    </span>
+  );
+}
 
 interface NavItem {
   id: SectionId;
@@ -15,7 +65,6 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact Me" },
 ];
 
@@ -82,11 +131,11 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
               <span style={{ width: "14px", display: "inline-flex", justifyContent: "center", flexShrink: 0 }}>
                 <span className="status-dot" aria-hidden="true" />
               </span>
-              Open to EM &amp; Senior Eng roles
+              <span>Open to <CyclingRole /></span>
             </div>
             <div
               className="flex items-center gap-2"
-              style={{ color: "var(--color-text-muted)" }}
+              style={{ color: "var(--color-text-body)" }}
             >
               <span aria-hidden="true" style={{ width: "14px", display: "inline-flex", justifyContent: "center", flexShrink: 0 }}>📍</span>
               Sydney, AU

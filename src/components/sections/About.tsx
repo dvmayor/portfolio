@@ -32,23 +32,26 @@ export default function About() {
             style={{ color: "var(--color-text-body)" }}
           >
             <p>
-              Engineering teams that shipped to millions across Singapore and Sydney. Led delivery for{" "}
+              Engineering teams that shipped to millions across Asia. Led delivery for{" "}
               <a href="https://www.uobgroup.com" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">UOB</a>
               {" "}digital banking across 5 countries, worked on{" "}
               <a href="https://www.singpass.gov.sg" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">Singpass</a>
               {" "}and{" "}
               <a href="https://www.corppass.gov.sg" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">Corppass</a>
-              , the apps most Singapore residents use to log into government services.
+              , the apps Singapore residents use to log into government services.
             </p>
             <p>
               I like sitting between the tech and the product side, figuring out what
-              to build, not just how. I still get into the code when it helps. Right now
-              I&rsquo;m deliberately going deeper on agentic AI. I&rsquo;ve piloted an 
-              LLM-based document verification workflow, saw its potential in business 
-              impact, and want to continue driving that kind of value.
+              to build, not just how. I still get into the code when it helps. I&rsquo;ve
+              piloted an LLM-based document verification workflow, saw its potential in
+              business impact, and want to continue driving that kind of value.
             </p>
             <p>
-              I&rsquo;m an Australian PR based in Sydney, looking for an Engineering Manager or Senior Engineering role where I can own delivery and grow a team.
+              After leaving HCLTech in Aug 2025, I took time off to travel and pick up
+              new certifications, then moved to Sydney as an Australian PR in Jan 2026.
+              Currently going deeper on agentic AI (Bedrock, LangChain, RAG) and looking
+              for an Engineering Manager or Senior Engineering role where I can own
+              delivery and grow a team.
             </p>
           </div>
 
@@ -76,6 +79,35 @@ export default function About() {
             <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Domain</span>
             {["Digital Banking", "FinTech", "Identity Systems", "Fraud Prevention"].map((skill) => (
               <Pill key={skill} variant="domain">{skill}</Pill>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-3 mt-2">
+            <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Shipped for</span>
+            {[
+              { src: "/images/projects/logo-uob.svg", alt: "UOB", href: "https://www.uobgroup.com", height: "12px" },
+              { src: "/images/projects/logo-singpass.svg", alt: "Singpass", href: "https://www.singpass.gov.sg", height: "11px" },
+              { src: "/images/projects/logo-corppass.svg", alt: "Corppass", href: "https://www.corppass.gov.sg", height: "14px" },
+              { src: "/images/projects/logo-aia.svg", alt: "AIA", href: "https://www.aia.com/en/health-wellness/aia-vitality", height: "14px" },
+            ].map((logo) => (
+              <a
+                key={logo.alt}
+                href={logo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={logo.alt}
+                className="flex items-center rounded px-2 py-1 transition-opacity duration-150"
+                style={{ backgroundColor: "rgba(255,255,255,0.93)" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="object-contain"
+                  style={{ height: logo.height, width: "auto" }}
+                />
+              </a>
             ))}
           </div>
         </div>

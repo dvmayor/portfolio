@@ -20,18 +20,18 @@ export const experience: ExperienceItem[] = [
   {
     company: "HCLTech Singapore",
     url: "https://www.hcltech.com",
-    title: "Engineering Manager (Technical Lead)",
+    title: "Technical Lead",
     range: "May 2023 -Aug 2025",
     bullets: [
-      "Piloted an LLM-backed document verification workflow (Bedrock, LangChain, RAG) to replace manual eligibility checks in account opening, targeting 25% reduction in staff processing time.",
-      "Led end-to-end engineering delivery for UOB's digital banking platform across 5 ASEAN countries (mobile, web, and branch channels), serving 8 million customers.",
       "Managed and mentored 25+ engineers across design, dev, testing, and deployment.",
+      "Led end-to-end engineering delivery for UOB's digital banking platform across 5 ASEAN countries (mobile, web, and branch channels), serving 8 million customers.",
+      "Piloted an LLM-backed document verification workflow (Bedrock, LangChain, RAG) to replace manual eligibility checks in account opening, targeting 25% reduction in staff processing time.",
       "Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
     ],
     tech: ["Java", "Spring", "Bedrock", "LangChain", "RAG", "Microservices"],
     initiatives: [
       {
-        name: "Fraud Detection System",
+        name: "UOB Fraud Detection System",
         description:
           "Led development of a fraud detection initiative for UOB's digital banking operations. Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
         tech: ["Java", "Spring Boot", "React", "SQL"],

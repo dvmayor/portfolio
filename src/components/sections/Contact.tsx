@@ -56,9 +56,14 @@ export default function Contact() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="lg:max-w-lg"
       >
-        <p className="mb-8 text-sm leading-relaxed" style={{ color: "var(--color-text-body)" }}>
-          Want to talk? Drop me a message.
-        </p>
+        <div className="mb-8 flex flex-col gap-2">
+          <h2 className="text-2xl font-bold" style={{ color: "var(--color-text-primary)" }}>
+            Let's talk.
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-body)" }}>
+            Hiring manager, engineer, or just want to chat? Drop me a message and let's connect.
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input type="text" name="honeypot" value={form.honeypot ?? ""} onChange={handleChange} style={{ display: "none" }} tabIndex={-1} autoComplete="off" />

@@ -1,15 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BarChart2, Briefcase, ChevronRight } from "lucide-react";
+import { BarChart2, Briefcase, ChevronRight, ShieldAlert, Bot, UserCheck, Cloud, QrCode, Radio, HeartPulse, type LucideIcon } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Pill from "@/components/ui/Pill";
 import { experience, type Initiative } from "@/data/experience";
 import { certifications } from "@/data/certifications";
 
+const INITIATIVE_ICONS: Record<string, LucideIcon> = {
+  "UOB Fraud Detection System": ShieldAlert,
+  "AI Workflow Automation": Bot,
+  "Customer Onboarding & Identity Assurance": UserCheck,
+  "Corppass AWS Cloud Migration": Cloud,
+  "Singpass QR Login": QrCode,
+  "AIA Vitality Rewards Program": HeartPulse,
+  "MS5000 Radio Telecom Software": Radio,
+};
+
 export default function Experience() {
-  const [openMap, setOpenMap] = useState<Record<number, boolean>>({ 0: true, 1: true, 2: false, 3: false });
+  const [openMap, setOpenMap] = useState<Record<number, boolean>>({ 0: true, 1: true, 2: true, 3: true });
 
   return (
     <section id="experience" className="px-8 pb-8 pt-8 lg:px-16 lg:pb-8 lg:pt-8">
@@ -239,12 +249,24 @@ export default function Experience() {
 
 function InitiativesToggle({ initiatives }: { initiatives: Initiative[] }) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const handleBeforePrint = () => setOpen(true);
+    const handleAfterPrint = () => setOpen(false);
+    window.addEventListener("beforeprint", handleBeforePrint);
+    window.addEventListener("afterprint", handleAfterPrint);
+    return () => {
+      window.removeEventListener("beforeprint", handleBeforePrint);
+      window.removeEventListener("afterprint", handleAfterPrint);
+    };
+  }, []);
+
   return (
     <div className="mt-4 ml-[22px]">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-150"
+        className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-150 print:hidden"
         style={{ color: "var(--color-text-primary)", background: "none", border: "none", padding: 0, cursor: "pointer" }}
       >
         <ChevronRight
@@ -270,22 +292,14 @@ function InitiativesToggle({ initiatives }: { initiatives: Initiative[] }) {
 }
 
 function InitiativeRow({ init }: { init: Initiative }) {
+  const Icon = INITIATIVE_ICONS[init.name];
   return (
     <div className="py-2.5 pl-[22px]">
-      <div className="mb-1.5 flex items-baseline gap-2">
-        <span
-          aria-hidden="true"
-          className="inline-block flex-shrink-0 rounded-full"
-          style={{
-            width: 4,
-            height: 4,
-            background: "var(--color-text-body)",
-            transform: "translateY(-2px)",
-          }}
-        />
+      <div className="mb-1.5 flex items-center gap-2">
+        {Icon && <Icon size={13} aria-hidden="true" style={{ color: "var(--color-accent)", flexShrink: 0 }} />}
         <span
           className="text-sm font-bold"
-          style={{ color: "var(--icon-experience)" }}
+          style={{ color: "var(--color-accent-secondary)" }}
         >
           {init.name}
         </span>

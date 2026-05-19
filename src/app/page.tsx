@@ -3,10 +3,10 @@
 import LeftColumn from "@/components/LeftColumn";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
-import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import ParticleBackground from "@/components/ui/ParticleBackground";
+import ScrollToTop from "@/components/ScrollToTop";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
 export default function Home() {
@@ -25,11 +25,11 @@ export default function Home() {
         <main className="flex-1 min-w-0">
           <About />
           <Experience />
-          <Projects />
           <Contact />
           <Footer />
         </main>
       </div>
+      <ScrollToTop />
     </div>
   );
 }
