@@ -244,7 +244,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
         className="mt-10 flex items-center gap-5 lg:mt-0"
       >
         {[
-          // { href: "https://github.com/davidreuelv", label: "GitHub", Icon: GitHubIcon },
+          { href: "https://github.com/dvmayor", label: "GitHub", Icon: GitHubIcon },
           { href: "https://www.linkedin.com/in/davidreuelvillamayor/", label: "LinkedIn", Icon: LinkedInIcon },
         ].map(({ href, label, Icon }) => (
           <a
