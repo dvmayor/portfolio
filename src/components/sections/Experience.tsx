@@ -159,35 +159,42 @@ export default function Experience() {
                 hidden: { y: 16, opacity: 0 },
                 visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
               }}
-              className="relative flex flex-col gap-2 rounded-lg px-5 py-4"
+              className="relative flex flex-row gap-4 items-center rounded-lg px-5 py-4"
               style={{
                 backgroundColor: "var(--color-bg-card)",
                 border: "1px solid var(--color-border)",
                 borderTop: "2px solid var(--color-tag-domain-border)",
               }}
             >
+              {c.logo && (
+                <div
+                  className="flex-shrink-0 flex items-center justify-center rounded-lg"
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    backgroundColor: c.logoBg ?? "transparent",
+                    padding: c.logoBg ? "4px" : "0",
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={c.logo} alt={c.issuer} className="object-contain w-full h-full" />
+                </div>
+              )}
 
+              <div className="flex flex-col gap-1 flex-1 min-w-0">
               <div className="flex items-baseline justify-between gap-3">
                 <h4
-                  className="text-base font-bold leading-snug"
+                  className="text-sm font-bold leading-snug"
                   style={{ color: "var(--color-text-primary)" }}
                 >
                   {c.name}
                 </h4>
-                <span
-                  className="font-mono text-xs flex-shrink-0"
-                  style={{ color: "var(--color-text-primary)" }}
-                >
-                  {c.year}
-                </span>
               </div>
 
               <div className="flex items-baseline justify-between gap-3">
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
+                <p className="text-sm" style={{ color: "var(--color-text-body)" }}>
                   {c.issuer}
+                  <span className="font-mono text-xs ml-1.5" style={{ color: "var(--color-text-body)" }}>· {c.year}</span>
                 </p>
                 <a
                   href={c.verifyUrl}
@@ -209,6 +216,7 @@ export default function Experience() {
                   <span>Verify</span>
                   <span className="proj-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", fontSize: "14px", lineHeight: 1 }}>↗</span>
                 </a>
+              </div>
               </div>
             </motion.div>
           ))}
