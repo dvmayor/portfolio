@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BarChart2, Briefcase, ChevronRight, ShieldAlert, Bot, UserCheck, Cloud, QrCode, Radio, HeartPulse, Download, type LucideIcon } from "lucide-react";
+import { BarChart2, Briefcase, ChevronRight, ShieldAlert, UserCheck, Cloud, QrCode, Radio, HeartPulse, Download, type LucideIcon } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Pill from "@/components/ui/Pill";
 import { experience, type Initiative } from "@/data/experience";
@@ -10,7 +10,6 @@ import { certifications } from "@/data/certifications";
 
 const INITIATIVE_ICONS: Record<string, LucideIcon> = {
   "UOB Fraud Detection System": ShieldAlert,
-  "AI Workflow Automation": Bot,
   "Customer Onboarding & Identity Assurance": UserCheck,
   "Corppass AWS Cloud Migration": Cloud,
   "Singpass QR Login": QrCode,
@@ -237,7 +236,7 @@ export default function Experience() {
 }
 
 function InitiativesToggle({ initiatives }: { initiatives: Initiative[] }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     const handleBeforePrint = () => setOpen(true);
@@ -266,7 +265,7 @@ function InitiativesToggle({ initiatives }: { initiatives: Initiative[] }) {
             transition: "transform 0.15s ease",
           }}
         />
-        {`${open ? "Hide" : "Show"} Key Initiatives (${initiatives.length})`}
+        {open ? `Key Initiatives (${initiatives.length})` : `Show Key Initiatives (${initiatives.length})`}
       </button>
 
       {open && (

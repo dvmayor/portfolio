@@ -42,16 +42,15 @@ export default function About() {
             </p>
             <p>
               I like sitting between the tech and the product side, figuring out what
-              to build, not just how. I go into the code when the team needs it. I
-              piloted an LLM-based document verification workflow, saw the business
-              impact firsthand, and want to keep driving that kind of value.
+              to build, not just how. I go into the code when the team needs it.
+              After leaving HCLTech in Aug 2025, I spent six months going deep on
+              agentic AI: shipped two end-to-end projects with live URLs and real
+              architecture decisions I can defend in an interview.
             </p>
             <p>
-              After leaving HCLTech in Aug 2025, I traveled, picked up new
-              certifications, and moved to Sydney as an Australian PR in Jan 2026.
-              Going deeper on agentic AI (Bedrock, LangChain, RAG) and open to
-              Engineering Manager roles where delivery, team growth, and AI adoption
-              are the mandate.
+              Relocated to Sydney as an Australian PR in Jan 2026. Looking for
+              Engineering Manager roles where delivery at scale and hands-on AI
+              fluency are both on the job description — not just one of them.
             </p>
           </div>
 

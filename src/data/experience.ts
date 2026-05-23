@@ -25,10 +25,9 @@ export const experience: ExperienceItem[] = [
     bullets: [
       "Managed 3 cross-functional squads (25+ engineers) across design, dev, testing, and deployment.",
       "Owned end-to-end engineering delivery for UOB's digital banking platform across 5 ASEAN countries (mobile, web, and branch channels), serving 8 million customers.",
-      "Directed the design and delivery of an LLM-backed document verification pilot (Bedrock, LangChain, RAG), replacing manual eligibility checks in account opening and targeting a 25% reduction in staff processing time.",
       "Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
     ],
-    tech: ["Java", "Spring", "Bedrock", "LangChain", "RAG", "Microservices"],
+    tech: ["Java", "Spring", "Kotlin", "Swift", "Microservices"],
     initiatives: [
       {
         name: "UOB Fraud Detection System",
@@ -36,13 +35,6 @@ export const experience: ExperienceItem[] = [
           "Led development of a fraud detection initiative for UOB's digital banking operations. Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
         tech: ["Java", "Spring Boot", "React", "SQL"],
         outcomes: ["$1.7B scam losses mitigated"],
-      },
-      {
-        name: "AI Workflow Automation",
-        description:
-          "Integrated LLM-backed workflows using Amazon Bedrock, LangChain, and RAG pipelines into regulated environments.",
-        tech: ["Amazon Bedrock", "LangChain", "RAG", "Python", "TypeScript"],
-        outcomes: ["-25% manual processing"],
       },
       {
         name: "Customer Onboarding & Identity Assurance",
