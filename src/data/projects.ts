@@ -11,6 +11,7 @@ export interface FeaturedProject {
   logo: string;
   logoStyle?: CSSProperties;
   status?: "live" | "in-progress";
+  id?: string;
 }
 
 export const featuredProjects: FeaturedProject[] = [
@@ -27,6 +28,19 @@ export const featuredProjects: FeaturedProject[] = [
     status: "live",
   },
   {
+    id: "delivery-crew",
+    name: "Cross-Functional Software Delivery Crew",
+    description:
+      "A multi-agent crew that takes raw product requirements and does the delivery prep work. One agent analyzes the feature request for edge cases and business value. A second proposes data models, infrastructure updates, and API contracts. A third reviews the architecture against OWASP top 10 vulnerabilities. Built on CrewAI with hierarchical delegation so agents critique and refine each other before final output, turning a PRD into Jira-ready tickets.",
+    outcomes: ["PRD to architecture", "Security review", "Jira-ready tickets"],
+    tech: ["CrewAI", "Multi-agent AI", "Agents Orchestration", "Agentic AI", "Python"],
+    github: "",
+    live: "",
+    image: "/images/projects/delivery-crew.png",
+    logo: "",
+    status: "in-progress",
+  },
+  {
     name: "PDF Redactor",
     description:
       "PDFs often contain more than you want to share. Just drag to highlight any text and black it out with one click. Names, addresses, account numbers, anything. The text is permanently removed from the file, not just hidden. Everything runs in your browser. Your PDF never leaves your device.",
@@ -37,27 +51,5 @@ export const featuredProjects: FeaturedProject[] = [
     image: "/images/projects/pdf-redactor.jpg",
     logo: "",
     status: "live",
-  },
-  {
-    name: "Corppass",
-    description:
-      "Led full AWS Cloud migration of Singapore's corporate digital identity platform, improving scalability and authentication throughput for businesses accessing government services.",
-    outcomes: ["200k+ businesses", "AWS Cloud migration", "Improved auth throughput"],
-    tech: ["Java", "Spring", "AWS", "Kubernetes", "Weblogic", "Agile"],
-    github: "",
-    live: "https://www.corppass.gov.sg",
-    image: "/images/projects/corppass.jpg",
-    logo: "/images/projects/logo-corppass.svg",
-  },
-  {
-    name: "AIA Vitality",
-    description:
-      "Delivered integrations between wellness activity tracking, rewards, and the core insurance platform for AIA's science-backed wellness programme across Asia.",
-    outcomes: ["Pan-Asia rollout", "Insurance platform integration", "Wellness + rewards pipeline"],
-    tech: ["Java", "Spring Boot", "Microservices", "RESTful APIs", "SQL"],
-    github: "",
-    live: "https://www.aia.co.th/en/health-wellness/vitality",
-    image: "/images/projects/aia.jpg",
-    logo: "/images/projects/logo-aia.svg",
   },
 ];

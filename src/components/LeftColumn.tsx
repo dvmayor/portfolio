@@ -139,7 +139,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
             className="mt-1 text-sm lg:hidden"
             style={{ color: "var(--color-text-primary)", fontWeight: 500 }}
           >
-            Banking at scale across Asia. Now: Sydney.
+            Banking at scale across Asia. Now: Sydney, AU.
           </motion.p>
           <motion.div
             initial={{ y: 16, opacity: 0 }}

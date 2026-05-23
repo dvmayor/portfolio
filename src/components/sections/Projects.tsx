@@ -18,6 +18,7 @@ function ProjectCard({ project, i }: { project: FeaturedProject; i: number }) {
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: false, amount: 0.15 }}
       transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
+      id={project.id}
       className="group relative flex flex-col overflow-hidden rounded-lg lg:grid lg:grid-cols-[45%_1fr] cursor-pointer"
       style={{
         backgroundColor: hovered ? "var(--color-bg-card)" : "transparent",

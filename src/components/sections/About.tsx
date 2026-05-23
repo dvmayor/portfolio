@@ -32,25 +32,27 @@ export default function About() {
             style={{ color: "var(--color-text-body)" }}
           >
             <p>
-              Led delivery for{" "}
+              Led teams delivering for{" "}
               <a href="https://www.uobgroup.com" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">UOB</a>
-              {" "}digital banking across 5 ASEAN countries, and worked on{" "}
+              , one of Southeast Asia's largest banks, across 5 ASEAN countries, and worked on{" "}
               <a href="https://www.singpass.gov.sg" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">Singpass</a>
               {" "}and{" "}
               <a href="https://www.corppass.gov.sg" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">Corppass</a>
-              , the apps Singapore residents use to log into government services.
+              , the apps that allow Singapore residents to securely access government and private-sector services online.
             </p>
             <p>
               I like sitting between the tech and the product side, figuring out what
-              to build, not just how. I go into the code when the team needs it.
-              Since leaving HCLTech, I've been going deep on agentic AI, shipping
-              personal projects with live URLs and real architecture I can walk
-              through in a technical conversation.
+              to build, not just how. I still get into the code when it helps.
+              Since leaving HCLTech I've been building personal AI projects, including
+              a{" "}
+              <a href="#projects" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }}>Bank Statement AI Agent</a>
+              , live with real architecture behind it, and currently experimenting with running my own{" "}
+              <a href="#delivery-crew" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }}>multi-agent software delivery crew</a>
+              . The goal: understand what AI can actually do for a business when done properly, not just read about it.
             </p>
             <p>
-              Based in Sydney since Jan 2026, Australian PR. Looking for my first
-              EM role here, ideally where a decade of delivery at scale and
-              hands-on AI project work are the combination you want.
+              Australian PR based in Sydney since Jan 2026, looking for an
+              Engineering Manager role where I can own delivery, lead and grow a team.
             </p>
           </div>
 
