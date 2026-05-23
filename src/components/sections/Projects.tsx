@@ -37,16 +37,13 @@ function ProjectCard({ project, i }: { project: FeaturedProject; i: number }) {
         <img
           src={project.image}
           alt={project.name}
-          className="h-full w-full object-cover transition-opacity duration-300"
-          style={{ opacity: hovered ? 1 : 0.8 }}
+          className="h-full w-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.style.display = "none";
             (target.parentElement as HTMLElement).classList.add("img-placeholder");
           }}
         />
-        {/* gradient overlay */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(30,35,54,0.1), rgba(30,35,54,0.55))" }} />
         {/* number top-left */}
         <span className="absolute left-3 top-3 font-mono text-2xl font-bold select-none" style={{ color: "white", opacity: 0.5 }}>
           {String(i + 1).padStart(2, "0")}

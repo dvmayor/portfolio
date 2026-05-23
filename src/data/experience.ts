@@ -33,7 +33,7 @@ export const experience: ExperienceItem[] = [
         name: "UOB Fraud Detection System",
         description:
           "Led development of a fraud detection initiative for UOB's digital banking operations. Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
-        tech: ["Java", "Spring Boot", "React", "SQL"],
+        tech: ["Java", "Spring Boot", "Kotlin", "Swift", "React", "SQL", "Microservices"],
         outcomes: ["$1.7B scam losses mitigated"],
       },
       {

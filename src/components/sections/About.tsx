@@ -82,15 +82,17 @@ export default function About() {
           </div>
           <div className="flex flex-wrap gap-2">
             <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Domain</span>
-            {["Digital Banking", "FinTech", "Identity Systems", "Fraud Prevention"].map((skill) => (
+            {["Digital Banking", "FinTech", "Digital Identity", "Fraud Prevention", "HealthTech"].map((skill) => (
               <Pill key={skill} variant="domain">{skill}</Pill>
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-3 mt-2">
             <span className="text-xs font-semibold uppercase tracking-widest mr-1 self-center" style={{ color: "var(--color-text-muted)" }}>Shipped for</span>
             {[
+              { src: "/images/projects/logo-accenture.svg", alt: "Accenture", href: "https://www.accenture.com", height: "16px", padding: "2px 7px 5px" },
+              { src: "/images/projects/logo-hcltech.svg", alt: "HCLTech", href: "https://www.hcltech.com", height: "14px" },
               { src: "/images/projects/logo-uob.svg", alt: "UOB", href: "https://www.uobgroup.com", height: "12px" },
-              { src: "/images/projects/logo-singpass.svg", alt: "Singpass", href: "https://www.singpass.gov.sg", height: "11px" },
+              { src: "/images/projects/logo-singpass.svg", alt: "Singpass", href: "https://www.singpass.gov.sg", height: "10px", padding: "8px 4px 4px" },
               { src: "/images/projects/logo-corppass.svg", alt: "Corppass", href: "https://www.corppass.gov.sg", height: "14px" },
               { src: "/images/projects/logo-aia.svg", alt: "AIA", href: "https://www.aia.co.th/en/health-wellness/vitality", height: "14px" },
             ].map((logo) => (
@@ -100,8 +102,8 @@ export default function About() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={logo.alt}
-                className="flex items-center rounded px-2 py-1 transition-opacity duration-150"
-                style={{ backgroundColor: "rgba(255,255,255,0.93)", opacity: "0.75" }}
+                className="flex items-center rounded transition-opacity duration-150"
+                style={{ backgroundColor: "rgba(255,255,255,0.93)", opacity: "0.75", padding: (logo as any).padding ?? "4px 4px" }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
               >
