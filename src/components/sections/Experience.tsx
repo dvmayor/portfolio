@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BarChart2, Briefcase, ChevronRight, ShieldAlert, UserCheck, Cloud, QrCode, Radio, HeartPulse, Download, type LucideIcon } from "lucide-react";
+import { BarChart2, Briefcase, ChevronRight, ShieldAlert, ScanFace, Landmark, Cloud, QrCode, Radio, HeartPulse, Download, PlayCircle, type LucideIcon } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Pill from "@/components/ui/Pill";
 import { experience, type Initiative } from "@/data/experience";
 import { certifications } from "@/data/certifications";
 
 const INITIATIVE_ICONS: Record<string, LucideIcon> = {
-  "UOB Fraud Detection System": ShieldAlert,
-  "Customer Onboarding & Identity Assurance": UserCheck,
+  "Account Drainage Detection": ShieldAlert,
+  "Facial Biometric Authentication": ScanFace,
+  "Citibank-to-UOB Portfolio Migration": Landmark,
   "Corppass AWS Cloud Migration": Cloud,
   "Singpass QR Login": QrCode,
   "AIA Vitality Rewards Program": HeartPulse,
@@ -317,6 +318,53 @@ function InitiativeRow({ init }: { init: Initiative }) {
             {t}
           </Pill>
         ))}
+      </div>
+      <div className="ml-3 mt-2 flex items-center gap-3">
+        {init.articleUrl && (
+          <a
+            href={init.articleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-medium transition-colors duration-150"
+            style={{ color: "var(--color-accent)" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
+              const arrow = e.currentTarget.querySelector(".init-arrow") as HTMLElement;
+              if (arrow) arrow.style.transform = "translate(2px, -2px)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
+              const arrow = e.currentTarget.querySelector(".init-arrow") as HTMLElement;
+              if (arrow) arrow.style.transform = "translateX(0)";
+            }}
+          >
+            <span>Read article</span>
+            <span className="init-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", lineHeight: 1 }}>↗</span>
+          </a>
+        )}
+        {init.youtubeUrl && (
+          <a
+            href={init.youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-medium transition-colors duration-150"
+            style={{ color: "var(--color-accent)" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
+              const arrow = e.currentTarget.querySelector(".watch-arrow") as HTMLElement;
+              if (arrow) arrow.style.transform = "translate(2px, -2px)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
+              const arrow = e.currentTarget.querySelector(".watch-arrow") as HTMLElement;
+              if (arrow) arrow.style.transform = "translateX(0)";
+            }}
+          >
+            <PlayCircle size={13} />
+            <span>Watch</span>
+            <span className="watch-arrow" style={{ transition: "transform 150ms ease", display: "inline-block", lineHeight: 1 }}>↗</span>
+          </a>
+        )}
       </div>
     </div>
   );

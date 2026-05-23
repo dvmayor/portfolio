@@ -19,9 +19,9 @@ export default function About() {
       >
         {/* Headline — full width */}
         <h2 className="text-3xl font-bold leading-[1.1] tracking-tight lg:text-5xl" style={{ color: "var(--color-text-primary)" }}>
-          Building teams that{" "}
-          <span style={{ color: "var(--color-highlight)" }}>ship to millions.</span>
-          {" "}Going deep on{" "}
+          Led banking delivery across{" "}
+          <span style={{ color: "var(--color-highlight)" }}>5 ASEAN countries.</span>
+          {" "}Now going deep on{" "}
           <span style={{ color: "var(--color-accent)" }}>AI.</span>
         </h2>
 
@@ -32,9 +32,9 @@ export default function About() {
             style={{ color: "var(--color-text-body)" }}
           >
             <p>
-              Engineering teams that shipped to millions across Asia. Led delivery for{" "}
+              Led delivery for{" "}
               <a href="https://www.uobgroup.com" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">UOB</a>
-              {" "}digital banking across 5 countries, worked on{" "}
+              {" "}digital banking across 5 ASEAN countries, and worked on{" "}
               <a href="https://www.singpass.gov.sg" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">Singpass</a>
               {" "}and{" "}
               <a href="https://www.corppass.gov.sg" className="font-medium transition-colors duration-150 hover:underline" style={{ color: "var(--color-accent)" }} target="_blank" rel="noopener noreferrer">Corppass</a>
@@ -43,14 +43,14 @@ export default function About() {
             <p>
               I like sitting between the tech and the product side, figuring out what
               to build, not just how. I go into the code when the team needs it.
-              After leaving HCLTech in Aug 2025, I spent six months going deep on
-              agentic AI: shipped two end-to-end projects with live URLs and real
-              architecture decisions I can defend in an interview.
+              Since leaving HCLTech, I've been going deep on agentic AI, shipping
+              personal projects with live URLs and real architecture I can walk
+              through in a technical conversation.
             </p>
             <p>
-              Relocated to Sydney as an Australian PR in Jan 2026. Looking for
-              Engineering Manager roles where delivery at scale and hands-on AI
-              fluency are both on the job description — not just one of them.
+              Based in Sydney since Jan 2026, Australian PR. Looking for my first
+              EM role here, ideally where a decade of delivery at scale and
+              hands-on AI project work are the combination you want.
             </p>
           </div>
 

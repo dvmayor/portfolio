@@ -3,6 +3,8 @@ export interface Initiative {
   description: string;
   tech: string[];
   outcomes?: string[];
+  articleUrl?: string;
+  youtubeUrl?: string;
 }
 
 export interface ExperienceItem {
@@ -25,22 +27,35 @@ export const experience: ExperienceItem[] = [
     bullets: [
       "Managed 3 cross-functional squads (25+ engineers) across design, dev, testing, and deployment.",
       "Owned end-to-end engineering delivery for UOB's digital banking platform across 5 ASEAN countries (mobile, web, and branch channels), serving 8 million customers.",
+      "Drove technical design decisions and release governance across squads; served as the engineering interface for UOB product and compliance stakeholders across multiple ASEAN markets.",
       "Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
     ],
     tech: ["Java", "Spring", "Kotlin", "Swift", "Microservices"],
     initiatives: [
       {
-        name: "UOB Fraud Detection System",
+        name: "Account Drainage Detection",
         description:
-          "Led development of a fraud detection initiative for UOB's digital banking operations. Awarded Certificate of Recognition for Performance Excellence (Mar 2024).",
-        tech: ["Java", "Spring Boot", "Kotlin", "Swift", "React", "SQL", "Microservices"],
+          "Built UOB's safeguard system against account-draining scams, detecting and blocking transactions that would empty account balances, in line with Singapore's Shared Responsibility Framework and the industry-wide response coordinated by the Association of Banks in Singapore.",
+        tech: ["React", "Kotlin", "Swift", "Java", "Spring", "SQL"],
         outcomes: ["$1.7B scam losses mitigated"],
+        articleUrl: "https://www.compliancecorylated.com/news/singapore-banks-act-on-account-draining-scams/",
+        youtubeUrl: "https://www.youtube.com/watch?v=DzHyIuDv1Rk",
       },
       {
-        name: "Customer Onboarding & Identity Assurance",
+        name: "Facial Biometric Authentication",
         description:
-          "Built customer onboarding and identity assurance level systems integrating front-end digital banking apps with back-end systems across multiple ASEAN countries.",
-        tech: ["Java", "Spring", "Apache Camel", "RESTful APIs"],
+          "Delivered facial recognition for high-value mobile banking transactions across UOB's ASEAN markets, meeting regulatory mandates (including Bank of Thailand) that required biometric authentication above defined per-transaction and daily transfer thresholds.",
+        tech: ["Java", "Spring", "RESTful APIs", "React", "Microservices"],
+        outcomes: ["Certificate of Recognition"],
+        articleUrl: "https://www.bangkokpost.com/business/2557434/banks-tell-users-put-on-your-best-face",
+      },
+      {
+        name: "Citibank-to-UOB Portfolio Migration",
+        description:
+          "Following UOB's acquisition of Citibank's ASEAN consumer banking business, part of the Customer Onboarding stream delivering platform changes to migrate 2.4 million customers into UOB's digital channels across Malaysia, Indonesia, and Thailand. Described by The Asian Banker as ASEAN's largest data merger.",
+        tech: ["Java", "Spring", "Apache Camel"],
+        outcomes: ["2.4M customers migrated"],
+        articleUrl: "https://live.theasianbanker.com/video/uob-integrates-citigroup-in-aseans-largest-data-merger",
       },
     ],
   },
@@ -60,16 +75,18 @@ export const experience: ExperienceItem[] = [
       {
         name: "Corppass AWS Cloud Migration",
         description:
-          "Led full migration of Singapore's corporate digital identity platform to AWS Cloud, improving scalability and authentication processing times.",
+          "Led full migration of Singapore's corporate digital identity platform to AWS Cloud, improving scalability and authentication processing times for 200k+ businesses.",
         tech: ["AWS", "Kubernetes", "Docker", "Microservices", "React", "Java"],
         outcomes: ["200k+ businesses"],
+        articleUrl: "https://www.tech.gov.sg/products-and-services/for-businesses/corporate-transactions/corppass/",
       },
       {
         name: "Singpass QR Login",
         description:
-          "Designed and delivered QR-based login for Singpass, supporting millions of daily authentication requests.",
+          "Designed and delivered QR-based login for Singpass, used by 5M+ users and handling millions of daily authentication requests.",
         tech: ["React", "Java", "Spring", "RESTful APIs"],
         outcomes: ["5M+ users"],
+        articleUrl: "https://www.tech.gov.sg/products-and-services/for-citizens/digital-services/singpass/",
       },
     ],
   },
@@ -89,6 +106,7 @@ export const experience: ExperienceItem[] = [
         description:
           "Built integrations for AIA's science-backed wellness rewards programme, linking activity tracking and rewards fulfilment into the core insurance platform.",
         tech: ["Java", "Spring", "RESTful APIs", "SQL"],
+        articleUrl: "https://www.vitalitygroup.com/insights/aia-and-discovery-launch-aia-vitality-in-asia-pacific/",
       },
     ],
   },
@@ -106,8 +124,10 @@ export const experience: ExperienceItem[] = [
       {
         name: "MS5000 Radio Telecom Software",
         description:
-          "Designed, developed, and maintained mission-critical Java applications for NEC's MS5000 R10.0 Radio platform. Awarded Presidential Award.",
-        tech: ["Java"],
+          "Designed, developed, and maintained mission-critical Java applications for NEC's MS5000 R10.0 Radio platform. Received Presidential Award for outstanding product development quality and delivery.",
+        tech: ["Java", "Swing", "Websphere"],
+        outcomes: ["Presidential Award"],
+        articleUrl: "https://sg.nec.com/en_AP/press/201105/ap_20110510_01.html",
       },
     ],
   },

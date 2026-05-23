@@ -139,7 +139,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
             className="mt-1 text-sm lg:hidden"
             style={{ color: "var(--color-text-primary)", fontWeight: 500 }}
           >
-            Engineering teams that ship to millions.
+            Banking at scale across Asia. Now: Sydney.
           </motion.p>
           <motion.div
             initial={{ y: 16, opacity: 0 }}
