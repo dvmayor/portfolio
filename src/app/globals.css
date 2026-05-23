@@ -39,6 +39,7 @@
   --color-card-hover-shadow: 0 8px 24px -6px hsla(14, 98%, 50%, 0.15);
   --color-bg:             rgb(30, 35, 54);
   --color-bg-card:        rgb(41, 46, 66);
+  --color-bg-card-hover:  rgb(50, 56, 80);
   --color-bg-nav:         rgb(30, 35, 54);
   --color-text-primary:   rgb(255, 255, 255);
   --color-text-body:      rgb(169, 177, 214);
@@ -74,6 +75,7 @@ html[data-theme="light"] {
   --color-hover-border:   transparent;
   --color-bg:             #f4f5f8;
   --color-bg-card:        #ffffff;
+  --color-bg-card-hover:  #f0f1f7;
   --color-bg-nav:         #f4f5f8;
   --color-text-primary:   #000000;
   --color-text-body:      #09022a;
@@ -191,6 +193,11 @@ html[data-theme="light"] .status-dot {
 }
 @media (prefers-reduced-motion: reduce) {
   .status-dot { animation: none; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
 }
 
 /* Keyboard navigation focus ring */

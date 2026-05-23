@@ -21,7 +21,7 @@ function EmailCopyButton() {
   };
 
   const tooltipVisible = hovered || copied;
-  const tooltipText = copied ? "Copied!" : "Copy my email";
+  const tooltipText = copied ? `Copied! ${EMAIL}` : "Copy my email";
 
   return (
     <div className="relative">
@@ -87,6 +87,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact Me" },
 ];
 
@@ -154,7 +155,7 @@ export default function LeftColumn({ activeSection }: LeftColumnProps) {
               <span style={{ width: "14px", display: "inline-flex", justifyContent: "center", flexShrink: 0 }}>
                 <span className="status-dot" aria-hidden="true" />
               </span>
-              <span style={{ color: "var(--color-highlight)" }}>EM & Tech Lead roles</span>
+              <span style={{ color: "var(--color-highlight)" }}>EM & Technical EM roles</span>
             </div>
             <div
               className="flex items-center gap-2"

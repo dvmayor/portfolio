@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-export type SectionId = "about" | "experience" | "contact";
+export type SectionId = "about" | "experience" | "projects" | "contact";
 
-const SECTION_IDS: SectionId[] = ["about", "experience", "contact"];
+const SECTION_IDS: SectionId[] = ["about", "experience", "projects", "contact"];
 
 export function useActiveSection(): SectionId {
   const [active, setActive] = useState<SectionId>("about");

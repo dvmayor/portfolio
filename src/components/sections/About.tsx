@@ -93,7 +93,7 @@ export default function About() {
               { src: "/images/projects/logo-uob.svg", alt: "UOB", href: "https://www.uobgroup.com", height: "12px" },
               { src: "/images/projects/logo-singpass.svg", alt: "Singpass", href: "https://www.singpass.gov.sg", height: "11px" },
               { src: "/images/projects/logo-corppass.svg", alt: "Corppass", href: "https://www.corppass.gov.sg", height: "14px" },
-              { src: "/images/projects/logo-aia.svg", alt: "AIA", href: "https://www.aia.com/en/health-wellness/aia-vitality", height: "14px" },
+              { src: "/images/projects/logo-aia.svg", alt: "AIA", href: "https://www.aia.co.th/en/health-wellness/vitality", height: "14px" },
             ].map((logo) => (
               <a
                 key={logo.alt}
